@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Dice Poker"
-run/main_scene="res://Scenes/Main Menu.tscn"
+run/main_scene="res://Scenes/table.tscn"
 config/features=PackedStringArray("4.3", "GL Compatibility")
 
 [display]
