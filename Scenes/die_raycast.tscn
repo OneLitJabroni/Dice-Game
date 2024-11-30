@@ -1,9 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://b2i8m2n0swhwy"]
-
-[ext_resource type="Script" path="res://die_raycast.gd" id="1_t3lbx"]
-
-[node name="DieRaycast" type="RayCast3D"]
-target_position = Vector3(0, -0.1, 0)
-collision_mask = 2
-hit_from_inside = true
-script = ExtResource("1_t3lbx")

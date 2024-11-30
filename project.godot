@@ -10,16 +10,16 @@ config_version=5
 
 [application]
 
-config/name="Dice Poker"
-run/main_scene="res://Scenes/table.tscn"
-config/features=PackedStringArray("4.3", "GL Compatibility")
+config/name="YachtCPoker"
+run/main_scene="res://Poker.tscn"
+config/features=PackedStringArray("4.3", "Mobile")
+config/icon="res://icon.svg"
 
-[display]
+[filesystem]
 
-window/size/viewport_width=1920
-window/size/viewport_height=900
+import/fbx2gltf/enabled=false
 
 [rendering]
 
-global_illumination/voxel_gi/quality=1
-environment/subsurface_scattering/subsurface_scattering_quality=0
+renderer/rendering_method="gl_compatibility"
+renderer/rendering_method.mobile="gl_compatibility"

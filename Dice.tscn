@@ -1,0 +1,51 @@
+[gd_scene load_steps=5 format=3 uid="uid://fyr7meo70t3d"]
+
+[ext_resource type="Script" path="res://dice.gd" id="1_eeqnh"]
+[ext_resource type="PackedScene" uid="uid://cjd2s7l6r3w" path="res://Assets/GameDice.glb" id="2_1iunv"]
+[ext_resource type="PackedScene" uid="uid://doixwg3l14udg" path="res://raycast3d.tscn" id="3_ms56d"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_uxojv"]
+
+[node name="Dice" type="RigidBody3D"]
+gravity_scale = 2.0
+freeze = true
+script = ExtResource("1_eeqnh")
+
+[node name="GameDice" parent="." instance=ExtResource("2_1iunv")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+shape = SubResource("BoxShape3D_uxojv")
+
+[node name="Raycasts" type="Node3D" parent="."]
+
+[node name="Jack" parent="Raycasts" instance=ExtResource("3_ms56d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.99239, 0)
+opposite_side = 3
+
+[node name="Ace" parent="Raycasts" instance=ExtResource("3_ms56d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.01202, 0)
+target_position = Vector3(0, 0.1, 0)
+opposite_side = 6
+
+[node name="King" parent="Raycasts" instance=ExtResource("3_ms56d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.037268, -0.986596)
+target_position = Vector3(0, 0, -0.1)
+opposite_side = 5
+
+[node name="Ten" parent="Raycasts" instance=ExtResource("3_ms56d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.037268, 0.990453)
+target_position = Vector3(0, 0, 0.1)
+opposite_side = 2
+
+[node name="Nine" parent="Raycasts" instance=ExtResource("3_ms56d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.994735, -0.037268, -0.00719811)
+target_position = Vector3(0.1, 0, 0)
+opposite_side = 1
+
+[node name="Queen" parent="Raycasts" instance=ExtResource("3_ms56d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.00847, -0.037268, -0.00719811)
+target_position = Vector3(-0.1, 0, 0)
+opposite_side = 4
+
+[connection signal="sleeping_state_changed" from="." to="." method="_on_sleeping_state_changed"]

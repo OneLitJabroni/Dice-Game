@@ -1,7 +1,7 @@
 extends RayCast3D
 
 
-@export var opposite_side: int
+@export var opposite_side:int
 
 
 func _ready():
