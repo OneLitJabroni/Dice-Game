@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://grku4er70bob"
-path="res://.godot/imported/Dicepokertable.glb-5191384c7727153b4e93ae1c252db3ca.scn"
+uid="uid://cqoh56doij3mi"
+path="res://.godot/imported/Dicepokertable2.glb-68d2e1cb237376fd104a8941f176ea73.scn"
 
 [deps]
 
-source_file="res://Assets/Dicepokertable.glb"
-dest_files=["res://.godot/imported/Dicepokertable.glb-5191384c7727153b4e93ae1c252db3ca.scn"]
+source_file="res://Assets/Dicepokertable2.glb"
+dest_files=["res://.godot/imported/Dicepokertable2.glb-68d2e1cb237376fd104a8941f176ea73.scn"]
 
 [params]
 

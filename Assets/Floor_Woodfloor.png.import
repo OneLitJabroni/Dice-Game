@@ -2,20 +2,21 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cxm168ovbummy"
-path.s3tc="res://.godot/imported/Dicepokertable_fabrics_0075_plane_600.png-b893afe07787846ce7dbfff98829a894.s3tc.ctex"
+uid="uid://b2x0aa3m4ldd5"
+path.s3tc="res://.godot/imported/Floor_Woodfloor.png-03ebb876f55fa139514821256f8a8301.s3tc.ctex"
+path.etc2="res://.godot/imported/Floor_Woodfloor.png-03ebb876f55fa139514821256f8a8301.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 generator_parameters={
-"md5": "744b077607a7c19d658dfeb372a98809"
+"md5": "3b8fabcffef248c0e78170aa6a412933"
 }
 
 [deps]
 
-source_file="res://Assets/Dicepokertable_fabrics_0075_plane_600.png"
-dest_files=["res://.godot/imported/Dicepokertable_fabrics_0075_plane_600.png-b893afe07787846ce7dbfff98829a894.s3tc.ctex"]
+source_file="res://Assets/Floor_Woodfloor.png"
+dest_files=["res://.godot/imported/Floor_Woodfloor.png-03ebb876f55fa139514821256f8a8301.s3tc.ctex", "res://.godot/imported/Floor_Woodfloor.png-03ebb876f55fa139514821256f8a8301.etc2.ctex"]
 
 [params]
 

@@ -2,10 +2,11 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cr1b768lo2sxp"
-path.s3tc="res://.godot/imported/Dicepokertable_planks.jpg-94f4288c13245d88d549f86a597f81db.s3tc.ctex"
+uid="uid://cauqjqqvajmgg"
+path.s3tc="res://.godot/imported/Dicepokertable2_planks.jpg-0ba5863fb73438b9c83fceb2c9e1d81b.s3tc.ctex"
+path.etc2="res://.godot/imported/Dicepokertable2_planks.jpg-0ba5863fb73438b9c83fceb2c9e1d81b.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 generator_parameters={
@@ -14,8 +15,8 @@ generator_parameters={
 
 [deps]
 
-source_file="res://Assets/Dicepokertable_planks.jpg"
-dest_files=["res://.godot/imported/Dicepokertable_planks.jpg-94f4288c13245d88d549f86a597f81db.s3tc.ctex"]
+source_file="res://Assets/Dicepokertable2_planks.jpg"
+dest_files=["res://.godot/imported/Dicepokertable2_planks.jpg-0ba5863fb73438b9c83fceb2c9e1d81b.s3tc.ctex", "res://.godot/imported/Dicepokertable2_planks.jpg-0ba5863fb73438b9c83fceb2c9e1d81b.etc2.ctex"]
 
 [params]
 

@@ -2,21 +2,21 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dxsgw4iq8tyul"
-path.s3tc="res://.godot/imported/GameDice_dice symbols.png-67aa8eace82d149d0fed6cad1754bb74.s3tc.ctex"
-path.etc2="res://.godot/imported/GameDice_dice symbols.png-67aa8eace82d149d0fed6cad1754bb74.etc2.ctex"
+uid="uid://bbxgm2rd6ay2w"
+path.s3tc="res://.godot/imported/cup_-red-solo-cup.png-77d417c3bc5ab22066ae66b92e8d6e14.s3tc.ctex"
+path.etc2="res://.godot/imported/cup_-red-solo-cup.png-77d417c3bc5ab22066ae66b92e8d6e14.etc2.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 generator_parameters={
-"md5": "684c3fa178d523b71dfe4e1a79180144"
+"md5": "f9edfd72a700b77180d2b3f6fe2062da"
 }
 
 [deps]
 
-source_file="res://Assets/GameDice_dice symbols.png"
-dest_files=["res://.godot/imported/GameDice_dice symbols.png-67aa8eace82d149d0fed6cad1754bb74.s3tc.ctex", "res://.godot/imported/GameDice_dice symbols.png-67aa8eace82d149d0fed6cad1754bb74.etc2.ctex"]
+source_file="res://Assets/cup_-red-solo-cup.png"
+dest_files=["res://.godot/imported/cup_-red-solo-cup.png-77d417c3bc5ab22066ae66b92e8d6e14.s3tc.ctex", "res://.godot/imported/cup_-red-solo-cup.png-77d417c3bc5ab22066ae66b92e8d6e14.etc2.ctex"]
 
 [params]
 

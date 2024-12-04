@@ -2,7 +2,6 @@ extends RigidBody3D
 
 
 @onready var raycasts = $Raycasts.get_children()
-
 var start_pos
 var roll_strength = 30
 
@@ -12,6 +11,8 @@ signal roll_finished(value)
 
 func _ready():
 	start_pos = global_position
+# Add dice faces to the ItemList
+
 
 
 func _input(event):
@@ -46,3 +47,6 @@ func _on_sleeping_state_changed():
 		for raycast in raycasts:
 			if raycast.is_colliding():
 				roll_finished.emit(raycast.opposite_side)
+		
+		
+		

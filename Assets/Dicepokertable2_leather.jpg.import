@@ -2,10 +2,11 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c8vfcahsbqrcd"
-path.s3tc="res://.godot/imported/Dicepokertable_leather.jpg-8c7edf784cdd8deffc3272f3e6816ebf.s3tc.ctex"
+uid="uid://bp52680565kxn"
+path.s3tc="res://.godot/imported/Dicepokertable2_leather.jpg-8eb6dea7d61b2d1ffcb9bf6e2c2fa95b.s3tc.ctex"
+path.etc2="res://.godot/imported/Dicepokertable2_leather.jpg-8eb6dea7d61b2d1ffcb9bf6e2c2fa95b.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 generator_parameters={
@@ -14,8 +15,8 @@ generator_parameters={
 
 [deps]
 
-source_file="res://Assets/Dicepokertable_leather.jpg"
-dest_files=["res://.godot/imported/Dicepokertable_leather.jpg-8c7edf784cdd8deffc3272f3e6816ebf.s3tc.ctex"]
+source_file="res://Assets/Dicepokertable2_leather.jpg"
+dest_files=["res://.godot/imported/Dicepokertable2_leather.jpg-8eb6dea7d61b2d1ffcb9bf6e2c2fa95b.s3tc.ctex", "res://.godot/imported/Dicepokertable2_leather.jpg-8eb6dea7d61b2d1ffcb9bf6e2c2fa95b.etc2.ctex"]
 
 [params]
 
