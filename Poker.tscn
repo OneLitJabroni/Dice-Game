@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://c5a6rx67c6xxq"]
+[gd_scene load_steps=15 format=3 uid="uid://c5a6rx67c6xxq"]
 
 [ext_resource type="Script" path="res://World.gd" id="1_ycptu"]
 [ext_resource type="PackedScene" uid="uid://fyr7meo70t3d" path="res://Dice.tscn" id="2_ltmed"]
@@ -7,19 +7,28 @@
 [ext_resource type="PackedScene" uid="uid://ddstktsaoj7pq" path="res://Assets/Floor.glb" id="5_emtod"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ivgg2"]
-size = Vector3(0.889648, 2.32104, 2.24451)
+size = Vector3(0.891113, 2.32104, 2.24451)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_jh52u"]
-size = Vector3(5.14133, 1, 1.45618)
+size = Vector3(5.14133, 0.743286, 1.29282)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_qaao6"]
-size = Vector3(5.88666, 3.11584, 1)
+size = Vector3(5.88666, 3.11584, 0.982269)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_otpah"]
 size = Vector3(5.51364, 3.38245, 1.27051)
 
-[sub_resource type="SphereShape3D" id="SphereShape3D_1g3ns"]
-radius = 0.36863
+[sub_resource type="BoxShape3D" id="BoxShape3D_yqc5u"]
+size = Vector3(0.905334, 2.44324, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_sjwi0"]
+size = Vector3(1, 2.46191, 0.835449)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_3aa5q"]
+size = Vector3(1, 2.36121, 0.898071)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_b3pbq"]
+size = Vector3(1, 2.23975, 0.936584)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ufryp"]
 size = Vector3(2.31183, 0.166992, 2.12888)
@@ -27,50 +36,50 @@ size = Vector3(2.31183, 0.166992, 2.12888)
 [node name="World" type="Node3D"]
 script = ExtResource("1_ycptu")
 
-[node name="Area Staticbody" type="StaticBody3D" parent="."]
+[node name="tableStaticBody" type="StaticBody3D" parent="."]
 transform = Transform3D(20, 0, 0, 0, 20, 0, 0, 0, 20, 0, 3.82653, 0)
 
-[node name="frontwall" type="CollisionShape3D" parent="Area Staticbody"]
-transform = Transform3D(-1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0, 1, -2.94987, 2.11826, 0.0997925)
+[node name="frontwall" type="CollisionShape3D" parent="tableStaticBody"]
+transform = Transform3D(-1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0, 1, -2.91219, 2.11826, 0.0997925)
 shape = SubResource("BoxShape3D_ivgg2")
 
-[node name="backwall" type="CollisionShape3D" parent="Area Staticbody"]
-transform = Transform3D(-1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0, 1, 2.98023, 2.21115, 0.0997925)
+[node name="backwall" type="CollisionShape3D" parent="tableStaticBody"]
+transform = Transform3D(-1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0, 1, 2.95924, 2.21115, 0.0997925)
 shape = SubResource("BoxShape3D_ivgg2")
 
-[node name="tablefloor" type="CollisionShape3D" parent="Area Staticbody"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0205841, 0.798152, 0.022522)
+[node name="tablefloor" type="CollisionShape3D" parent="tableStaticBody"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0205841, 0.970661, -0.0205779)
 shape = SubResource("BoxShape3D_jh52u")
 
-[node name="leftwall" type="CollisionShape3D" parent="Area Staticbody"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0122633, 1.52781, -1.16336)
+[node name="leftwall" type="CollisionShape3D" parent="tableStaticBody"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0122633, 1.52781, -1.07618)
 shape = SubResource("BoxShape3D_qaao6")
 
-[node name="ceiling" type="CollisionShape3D" parent="Area Staticbody"]
+[node name="ceiling" type="CollisionShape3D" parent="tableStaticBody"]
 transform = Transform3D(1, 0, 0, 0, -0.0046077, -0.999989, 0, 0.999989, -0.0046077, 0.0122633, 3.69011, -0.190477)
 shape = SubResource("BoxShape3D_qaao6")
 
-[node name="rightwall" type="CollisionShape3D" parent="Area Staticbody"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.170853, 1.50617, 1.29053)
+[node name="rightwall" type="CollisionShape3D" parent="tableStaticBody"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.170853, 1.50617, 1.2326)
 shape = SubResource("BoxShape3D_otpah")
 
-[node name="FLcorner" type="CollisionShape3D" parent="Area Staticbody"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.65186, 1.397, -0.657418)
-shape = SubResource("SphereShape3D_1g3ns")
+[node name="FLcorner" type="CollisionShape3D" parent="tableStaticBody"]
+transform = Transform3D(0.724966, 0, -0.688785, 0, 1, 0, 0.688785, 0, 0.724966, -2.62258, 2.11862, -0.69002)
+shape = SubResource("BoxShape3D_yqc5u")
 
-[node name="FRcorner" type="CollisionShape3D" parent="Area Staticbody"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.65186, 1.397, 0.667552)
-shape = SubResource("SphereShape3D_1g3ns")
+[node name="FRcorner" type="CollisionShape3D" parent="tableStaticBody"]
+transform = Transform3D(0.699514, 0, -0.714619, 0, 1, 0, 0.714619, 0, 0.699514, -2.60322, 2.12796, 0.727584)
+shape = SubResource("BoxShape3D_sjwi0")
 
-[node name="BRcorner" type="CollisionShape3D" parent="Area Staticbody"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.56556, 1.397, 0.74481)
-shape = SubResource("SphereShape3D_1g3ns")
+[node name="BRcorner" type="CollisionShape3D" parent="tableStaticBody"]
+transform = Transform3D(0.654886, 0, 0.755728, 0, 1, 0, -0.755728, 0, 0.654886, 2.60612, 2.0776, 0.740665)
+shape = SubResource("BoxShape3D_3aa5q")
 
-[node name="BLcorner" type="CollisionShape3D" parent="Area Staticbody"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.56556, 1.397, -0.792244)
-shape = SubResource("SphereShape3D_1g3ns")
+[node name="BLcorner" type="CollisionShape3D" parent="tableStaticBody"]
+transform = Transform3D(0.74173, 0, -0.670699, 0, 1, 0, 0.670699, 0, 0.74173, 2.58683, 2.16556, -0.788158)
+shape = SubResource("BoxShape3D_b3pbq")
 
-[node name="Dicepokertable2" parent="Area Staticbody" instance=ExtResource("2_yrfif")]
+[node name="Dicepokertable2" parent="tableStaticBody" instance=ExtResource("2_yrfif")]
 transform = Transform3D(0.536534, 0, -0.843879, 0, 1, 0, 0.843879, 0, 0.536534, -1.83974, 0.180496, -0.00613136)
 
 [node name="WorldLight" type="OmniLight3D" parent="."]
@@ -79,38 +88,61 @@ light_energy = 5.0
 light_size = 0.333
 omni_range = 94.623
 
-[node name="WorldLight3" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -46.8086, 50.984, 0)
+[node name="WorldLight3" type="OmniLight3D" parent="WorldLight"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -46.8086, 10.531, 0)
 light_energy = 5.0
 light_size = 0.333
 omni_range = 94.623
 
-[node name="WorldLight2" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 44.9107, 49.7632, 0)
+[node name="WorldLight2" type="OmniLight3D" parent="WorldLight"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 44.9107, 9.3102, 0)
 light_energy = 5.0
 light_size = 0.333
 omni_range = 94.623
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -0.0286893, 0.999588, 0, -0.999588, -0.0286893, -4.01003, 91.8291, 0)
-
-[node name="Dice1" parent="." instance=ExtResource("2_ltmed")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.19099, 31.3064, 0.343618)
-
-[node name="Dice2" parent="." instance=ExtResource("2_ltmed")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.19099, 34.1465, 0.164482)
-
-[node name="Dice3" parent="." instance=ExtResource("2_ltmed")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.2948, 31.3064, -0.704138)
-
-[node name="Dice4" parent="." instance=ExtResource("2_ltmed")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.19099, 31.3064, -1.05813)
-
-[node name="Dice5" parent="." instance=ExtResource("2_ltmed")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.7023, 31.3064, 1.14446)
+transform = Transform3D(-0.937484, 0.347985, -0.00556055, 0.183664, 0.508243, 0.841402, 0.295621, 0.787779, -0.540382, -4.04789, 62.2026, -21.0584)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 layer = 2
+
+[node name="Label1" type="Label" parent="CanvasLayer"]
+offset_left = 229.0
+offset_top = 285.0
+offset_right = 269.0
+offset_bottom = 308.0
+
+[node name="Label2" type="Label" parent="CanvasLayer"]
+offset_left = 483.0
+offset_top = 275.0
+offset_right = 523.0
+offset_bottom = 298.0
+
+[node name="Label3" type="Label" parent="CanvasLayer"]
+offset_left = 591.0
+offset_top = 276.0
+offset_right = 631.0
+offset_bottom = 299.0
+
+[node name="Label4" type="Label" parent="CanvasLayer"]
+offset_left = 743.0
+offset_top = 263.0
+offset_right = 783.0
+offset_bottom = 286.0
+
+[node name="Label5" type="Label" parent="CanvasLayer"]
+offset_left = 882.0
+offset_top = 246.0
+offset_right = 922.0
+offset_bottom = 269.0
+
+[node name="Roll" type="Button" parent="CanvasLayer"]
+offset_right = 8.0
+offset_bottom = 8.0
+
+[node name="Reroll" type="Button" parent="CanvasLayer"]
+offset_right = 8.0
+offset_bottom = 8.0
 
 [node name="TextureRect1" type="TextureRect" parent="CanvasLayer"]
 offset_left = 301.0
@@ -118,6 +150,7 @@ offset_top = 436.0
 offset_right = 365.0
 offset_bottom = 490.0
 stretch_mode = 1
+metadata/_edit_use_anchors_ = true
 
 [node name="TextureRect2" type="TextureRect" parent="CanvasLayer"]
 offset_left = 402.0
@@ -125,6 +158,7 @@ offset_top = 430.0
 offset_right = 466.0
 offset_bottom = 484.0
 stretch_mode = 1
+metadata/_edit_use_anchors_ = true
 
 [node name="TextureRect3" type="TextureRect" parent="CanvasLayer"]
 offset_left = 489.0
@@ -132,6 +166,7 @@ offset_top = 424.0
 offset_right = 553.0
 offset_bottom = 478.0
 stretch_mode = 1
+metadata/_edit_use_anchors_ = true
 
 [node name="TextureRect4" type="TextureRect" parent="CanvasLayer"]
 offset_left = 585.0
@@ -139,6 +174,7 @@ offset_top = 428.0
 offset_right = 649.0
 offset_bottom = 482.0
 stretch_mode = 1
+metadata/_edit_use_anchors_ = true
 
 [node name="TextureRect5" type="TextureRect" parent="CanvasLayer"]
 offset_left = 685.0
@@ -146,6 +182,7 @@ offset_top = 426.0
 offset_right = 749.0
 offset_bottom = 480.0
 stretch_mode = 1
+metadata/_edit_use_anchors_ = true
 
 [node name="floorStaticBody" type="StaticBody3D" parent="."]
 
@@ -155,87 +192,104 @@ stretch_mode = 1
 transform = Transform3D(100, 0, 0, 0, 100, 0, 0, 0, 100, -0.735474, -3.21793, -1.46942)
 shape = SubResource("BoxShape3D_ufryp")
 
-[node name="floorStaticBody2" type="StaticBody3D" parent="."]
+[node name="floorStaticBody2" type="StaticBody3D" parent="floorStaticBody"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 207.131)
 
-[node name="Floor" parent="floorStaticBody2" instance=ExtResource("5_emtod")]
+[node name="Floor" parent="floorStaticBody/floorStaticBody2" instance=ExtResource("5_emtod")]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="floorStaticBody2"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="floorStaticBody/floorStaticBody2"]
 transform = Transform3D(100, 0, 0, 0, 100, 0, 0, 0, 100, -0.735474, -3.21793, -1.46942)
 shape = SubResource("BoxShape3D_ufryp")
 
-[node name="floorStaticBody3" type="StaticBody3D" parent="."]
+[node name="floorStaticBody3" type="StaticBody3D" parent="floorStaticBody"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 217.71, 0, 207.131)
 
-[node name="Floor" parent="floorStaticBody3" instance=ExtResource("5_emtod")]
+[node name="Floor" parent="floorStaticBody/floorStaticBody3" instance=ExtResource("5_emtod")]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="floorStaticBody3"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="floorStaticBody/floorStaticBody3"]
 transform = Transform3D(100, 0, 0, 0, 100, 0, 0, 0, 100, -0.735474, -3.21793, -1.46942)
 shape = SubResource("BoxShape3D_ufryp")
 
-[node name="floorStaticBody4" type="StaticBody3D" parent="."]
+[node name="floorStaticBody4" type="StaticBody3D" parent="floorStaticBody"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 217.71, 0, -0.0186615)
 
-[node name="Floor" parent="floorStaticBody4" instance=ExtResource("5_emtod")]
+[node name="Floor" parent="floorStaticBody/floorStaticBody4" instance=ExtResource("5_emtod")]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="floorStaticBody4"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="floorStaticBody/floorStaticBody4"]
 transform = Transform3D(100, 0, 0, 0, 100, 0, 0, 0, 100, -0.735474, -3.21793, -1.46942)
 shape = SubResource("BoxShape3D_ufryp")
 
-[node name="floorStaticBody5" type="StaticBody3D" parent="."]
+[node name="floorStaticBody5" type="StaticBody3D" parent="floorStaticBody"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 217.71, 0, -207.323)
 
-[node name="Floor" parent="floorStaticBody5" instance=ExtResource("5_emtod")]
+[node name="Floor" parent="floorStaticBody/floorStaticBody5" instance=ExtResource("5_emtod")]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="floorStaticBody5"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="floorStaticBody/floorStaticBody5"]
 transform = Transform3D(100, 0, 0, 0, 100, 0, 0, 0, 100, -0.735474, -3.21793, -1.46942)
 shape = SubResource("BoxShape3D_ufryp")
 
-[node name="floorStaticBody6" type="StaticBody3D" parent="."]
+[node name="floorStaticBody6" type="StaticBody3D" parent="floorStaticBody"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.33815, 0, -207.323)
 
-[node name="Floor" parent="floorStaticBody6" instance=ExtResource("5_emtod")]
+[node name="Floor" parent="floorStaticBody/floorStaticBody6" instance=ExtResource("5_emtod")]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="floorStaticBody6"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="floorStaticBody/floorStaticBody6"]
 transform = Transform3D(100, 0, 0, 0, 100, 0, 0, 0, 100, -0.735474, -3.21793, -1.46942)
 shape = SubResource("BoxShape3D_ufryp")
 
-[node name="floorStaticBody7" type="StaticBody3D" parent="."]
+[node name="floorStaticBody7" type="StaticBody3D" parent="floorStaticBody"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -217.181, 0, -207.323)
 
-[node name="Floor" parent="floorStaticBody7" instance=ExtResource("5_emtod")]
+[node name="Floor" parent="floorStaticBody/floorStaticBody7" instance=ExtResource("5_emtod")]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="floorStaticBody7"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="floorStaticBody/floorStaticBody7"]
 transform = Transform3D(100, 0, 0, 0, 100, 0, 0, 0, 100, -0.735474, -3.21793, -1.46942)
 shape = SubResource("BoxShape3D_ufryp")
 
-[node name="floorStaticBody8" type="StaticBody3D" parent="."]
+[node name="floorStaticBody8" type="StaticBody3D" parent="floorStaticBody"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -217.181, 0, -0.0950623)
 
-[node name="Floor" parent="floorStaticBody8" instance=ExtResource("5_emtod")]
+[node name="Floor" parent="floorStaticBody/floorStaticBody8" instance=ExtResource("5_emtod")]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="floorStaticBody8"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="floorStaticBody/floorStaticBody8"]
 transform = Transform3D(100, 0, 0, 0, 100, 0, 0, 0, 100, -0.735474, -3.21793, -1.46942)
 shape = SubResource("BoxShape3D_ufryp")
 
-[node name="floorStaticBody9" type="StaticBody3D" parent="."]
+[node name="floorStaticBody9" type="StaticBody3D" parent="floorStaticBody"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -217.181, 0, 205.158)
 
-[node name="Floor" parent="floorStaticBody9" instance=ExtResource("5_emtod")]
+[node name="Floor" parent="floorStaticBody/floorStaticBody9" instance=ExtResource("5_emtod")]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="floorStaticBody9"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="floorStaticBody/floorStaticBody9"]
 transform = Transform3D(100, 0, 0, 0, 100, 0, 0, 0, 100, -0.735474, -3.21793, -1.46942)
 shape = SubResource("BoxShape3D_ufryp")
 
 [node name="Cup" parent="." instance=ExtResource("5_8jkbx")]
 transform = Transform3D(1.0057, 0, 0, 0, 1.0057, 0, 0, 0, 1.0057, -78.6656, 34.7347, 0)
 
+[node name="Dice1" parent="." groups=["dice_group"] instance=ExtResource("2_ltmed")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.4824, 31.3064, 0.343618)
+mass = 3.0
+gravity_scale = 3.0
+
+[node name="Dice2" parent="." groups=["dice_group"] instance=ExtResource("2_ltmed")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.1757, 31.4951, 0.164482)
+gravity_scale = 3.0
+
+[node name="Dice3" parent="." groups=["dice_group"] instance=ExtResource("2_ltmed")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.21745, 31.3064, -0.704138)
+gravity_scale = 3.0
+
+[node name="Dice4" parent="." groups=["dice_group"] instance=ExtResource("2_ltmed")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.19099, 31.3064, -1.05813)
+gravity_scale = 3.0
+
+[node name="Dice5" parent="." groups=["dice_group"] instance=ExtResource("2_ltmed")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.7023, 31.3064, 1.14446)
+gravity_scale = 3.0
+
 [connection signal="roll_finished" from="Dice1" to="." method="_on_dice_1_roll_finished"]
-[connection signal="roll_finished" from="Dice2" to="." method="_on_dice_roll_finished"]
 [connection signal="roll_finished" from="Dice2" to="." method="_on_dice_2_roll_finished"]
-[connection signal="roll_finished" from="Dice3" to="." method="_on_dice_roll_finished"]
 [connection signal="roll_finished" from="Dice3" to="." method="_on_dice_3_roll_finished"]
-[connection signal="roll_finished" from="Dice4" to="." method="_on_dice_roll_finished"]
 [connection signal="roll_finished" from="Dice4" to="." method="_on_dice_4_roll_finished"]
-[connection signal="roll_finished" from="Dice5" to="." method="_on_dice_roll_finished"]
 [connection signal="roll_finished" from="Dice5" to="." method="_on_dice_5_roll_finished"]

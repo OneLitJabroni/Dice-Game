@@ -19,6 +19,10 @@ config/icon="res://icon.svg"
 
 import/fbx2gltf/enabled=false
 
+[physics]
+
+common/physics_ticks_per_second=80
+
 [rendering]
 
 renderer/rendering_method="mobile"
