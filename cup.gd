@@ -1,21 +1,30 @@
-extends CharacterBody3D
+extends RigidBody3D
 
+var pitch: float = 0.0
+var roll: float = 0.0
+var yaw: float = 0.0
 
-var speed = 5.0
-var tilt_sensitivity = 2.0
-var rotation_speed = 1.0
+var initial_yaw : float = 0.0
 
-func _process(delta):
-	var acceleration = Input.get_accelerometer()  # Get accelerometer data
+var k : float = 0.98
+
+func _ready():
+
+	var magnet: Vector3 = Input.get_magnetometer()
+	print(magnet)
+	initial_yaw = atan2(-magnet.x, magnet.z) 
+
+func _physics_process(delta):
+	var magnet: Vector3 = Input.get_magnetometer().rotated(-Vector3.FORWARD, rotation.z).rotated(Vector3.RIGHT, rotation.x)
+	var gravity: Vector3 = Input.get_gravity()
+	var roll_acc = atan2(-gravity.x, -gravity.y) 
+	gravity = gravity.rotated(-Vector3.FORWARD, rotation.z)
+	var pitch_acc = atan2(gravity.z, -gravity.y)
+	var yaw_magnet = atan2(-magnet.x, magnet.z)
 	
-	var tilt_vector = Vector3(acceleration.x, 0, acceleration.y) * tilt_sensitivity
+	var gyroscope: Vector3 = Input.get_gyroscope().rotated(-Vector3.FORWARD, roll)
+	pitch = lerp_angle(pitch_acc, pitch + gyroscope.x * delta, k)
+	yaw = lerp_angle(yaw_magnet, yaw + gyroscope.y * delta, k)
+	roll = lerp_angle(roll_acc, roll + gyroscope.z * delta, k) 
 	
-	var gyro_data = Input.get_gyroscope()  # Get gyroscope data
-	rotate_y(-gyro_data.x * rotation_speed * delta)  
-	if tilt_vector.length() > 0.1:
-		move_and_slide()
-		 # Get gyroscope data
-	rotate_y(-gyro_data.x * rotation_speed * delta)  # Rotate based on phone tilt  # For KinematicBody3D
-	
-	
-	
+	rotation = Vector3(pitch, yaw - initial_yaw, roll)

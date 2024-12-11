@@ -28,7 +28,7 @@ func roll():
 	#random throw impulse
 	var throw_vector = Vector3(randf_range(-1, 1), 0, randf_range(-1, 1)).normalized()
 	angular_velocity = throw_vector * roll_strength / 2
-	apply_central_impulse(throw_vector * roll_strength)
+	
 	
 
 	
@@ -46,5 +46,5 @@ func _on_sleeping_state_changed():
 			
 # Update this method to accept the value
 func _on_roll_finished(value):
-	print("Roll finished for", self.name, "with value:", value)
+	print("Roll finished for ", self.name, " with value:", value)
 	# Here, you can process the value (e.g., update the UI, show the result, etc.)

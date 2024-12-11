@@ -8,8 +8,7 @@
 size = Vector3(1.02173, 1.03717, 1)
 
 [node name="Dice" type="RigidBody3D"]
-mass = 2.0
-gravity_scale = 2.0
+mass = 4.0
 freeze = true
 script = ExtResource("1_eeqnh")
 

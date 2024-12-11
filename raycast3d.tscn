@@ -4,5 +4,6 @@
 
 [node name="dieRaycast3d" type="RayCast3D"]
 target_position = Vector3(0, -0.1, 0)
+collision_mask = 2
 hit_from_inside = true
 script = ExtResource("1_y6jeb")
