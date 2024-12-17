@@ -9,7 +9,7 @@ size = Vector3(1.02173, 1.03717, 1)
 
 [node name="Dice" type="RigidBody3D"]
 mass = 4.0
-freeze = true
+can_sleep = false
 script = ExtResource("1_eeqnh")
 
 [node name="GameDice" parent="." instance=ExtResource("2_1iunv")]
