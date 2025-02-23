@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://d1kxway1e7xnh"
-path="res://.godot/imported/cup.glb-3b95f30fa1542e1c12d4ea6b18583587.scn"
+uid="uid://c385l2hr3s588"
+path="res://.godot/imported/squareplasticcup.glb-980c5b9a9306ab4c3edaa79cd83e065d.scn"
 
 [deps]
 
-source_file="res://Assets/cup.glb"
-dest_files=["res://.godot/imported/cup.glb-3b95f30fa1542e1c12d4ea6b18583587.scn"]
+source_file="res://Assets/squareplasticcup.glb"
+dest_files=["res://.godot/imported/squareplasticcup.glb-980c5b9a9306ab4c3edaa79cd83e065d.scn"]
 
 [params]
 

@@ -45,19 +45,19 @@ func _ready():
 	# Instantiate the cup
 	var cup_instance = spawn_cup.instantiate()    
 	# Add the cup to the current scene (World node or any parent node)
-	add_child($Spawnpoint)
+	add_child(cup_instance)
 	# Defer the transform change to after the node is inside the tree
 	#cup_instance.call_deferred("set_position", Vector3(0, 0, 0))  # Set position for cup
-	
+	cup_instance.position = Vector3(-69, 34, 0)
 	# Instantiate 5 dice and add them as children of the cup
-	for i in range(5):
-		var dice_instance = spawn_dice.instantiate()
-		# Set positions for dice (you can modify this for random placement)
-		#dice_instance.call_deferred("set_position", Vector3(i * 0.2, 0, 0))  # Adjust the position as needed
-		
-		# Add each dice as a child of the cup
-		cup_instance.add_children(dice_instance)
-
+	#for i in range(1):
+		#var dice_instance = spawn_dice.instantiate()
+		## Set positions for dice (you can modify this for random placement)
+		##dice_instance.call_deferred("set_position", Vector3(i * 0.2, 0, 0))  # Adjust the position as needed
+		#
+		## Add each dice as a child of the cup
+		#add_child(dice_instance)
+		#dice_instance.position = Vector3(-69, 35,0)
 	# Add the dice to the dice_array for later usage
 
 

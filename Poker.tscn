@@ -1,9 +1,8 @@
-[gd_scene load_steps=17 format=3 uid="uid://c5a6rx67c6xxq"]
+[gd_scene load_steps=16 format=3 uid="uid://c5a6rx67c6xxq"]
 
 [ext_resource type="Script" path="res://World.gd" id="1_ycptu"]
 [ext_resource type="PackedScene" uid="uid://cqoh56doij3mi" path="res://Assets/Dicepokertable2.glb" id="2_yrfif"]
 [ext_resource type="PackedScene" uid="uid://ddstktsaoj7pq" path="res://Assets/Floor.glb" id="5_emtod"]
-[ext_resource type="Script" path="res://spawner.gd" id="6_8x2pq"]
 [ext_resource type="PackedScene" uid="uid://b1gbe4rjfqmbe" path="res://Assets/Wall.glb" id="6_gmkbp"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ivgg2"]
@@ -289,9 +288,8 @@ transform = Transform3D(-0.00357791, 0, -0.999994, 0, 1, 0, 0.999994, 0, -0.0035
 [node name="Wall5" parent="wallStaticBody" instance=ExtResource("6_gmkbp")]
 transform = Transform3D(0.0102274, 0, 0.999948, 0, 1, 0, -0.999948, 0, 0.0102274, 29.5645, 0, 12.5843)
 
-[node name="Spawnpoint" type="Node3D" parent="."]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -69.5721, 37.5489, 0)
-script = ExtResource("6_8x2pq")
-
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(0.0540619, 0.759126, -0.648695, -0.0102256, 0.650032, 0.759838, 0.998485, -0.034445, 0.0429045, -120.233, 81.1439, 7.36796)
+
+[node name="Spawn point" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -69.4607, 33.7519, 0)

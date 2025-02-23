@@ -9,17 +9,6 @@ signal roll_finished(value)
 func ready():
 	sleeping = false
 
-func roll():
-	# Wake the dice if they are sleeping
-	
-	# Reset velocities
-
-	
-	# Apply a random rotation to the dice
-	transform.basis = Basis(Vector3.RIGHT, randf_range(0, 2 * PI)) * transform.basis
-	transform.basis = Basis(Vector3.UP, randf_range(0, 2 * PI)) * transform.basis
-	transform.basis = Basis(Vector3.FORWARD, randf_range(0, 2 * PI)) * transform.basis	
-	# Apply a random throw impulse
 
 
 
