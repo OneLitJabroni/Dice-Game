@@ -4,19 +4,21 @@
 [ext_resource type="PackedScene" uid="uid://c385l2hr3s588" path="res://Assets/squareplasticcup.glb" id="2_iqy8j"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_t46ex"]
+margin = 10.0
 size = Vector3(8.5, 11.75, 3)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ndagr"]
-size = Vector3(9, 2.85791, 9)
+margin = 10.0
+size = Vector3(9, 5, 9)
 
 [node name="cup" type="RigidBody3D"]
+top_level = true
 disable_mode = 2
 collision_layer = 2
 collision_priority = 3.0
 input_ray_pickable = false
 gravity_scale = 0.0
 can_sleep = false
-custom_integrator = true
 continuous_cd = true
 script = ExtResource("1_ccct7")
 

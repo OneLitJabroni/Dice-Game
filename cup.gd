@@ -8,7 +8,7 @@ var smoothed_accel = Vector3.ZERO  # Low-pass filter for accelerometer data
 var k: float = 0.98  # Smoothing factor for gyroscope integration
 
 # Set origin position (where the cup stays)
-var origin_position = Vector3(-69, 34, 0)
+var origin_position = Vector3(-80, 45, 0)
 
 # Threshold to determine when the accelerometer input is considered "stopped"
 var input_threshold = 0.1

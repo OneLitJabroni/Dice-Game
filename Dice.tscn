@@ -6,17 +6,16 @@
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_uxojv"]
 custom_solver_bias = 1.0
-margin = 5.0
-size = Vector3(1.02173, 1.03717, 1)
+margin = 0.0
+size = Vector3(1.1, 1.1, 1.1)
 
 [node name="Dice" type="RigidBody3D"]
+top_level = true
 disable_mode = 2
 collision_mask = 2
-collision_priority = 2.0
 input_ray_pickable = false
 mass = 4.0
 can_sleep = false
-continuous_cd = true
 script = ExtResource("1_eeqnh")
 
 [node name="GameDice" parent="." instance=ExtResource("2_1iunv")]
