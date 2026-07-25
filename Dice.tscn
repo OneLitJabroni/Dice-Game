@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://fyr7meo70t3d"]
 
-[ext_resource type="Script" path="res://dice.gd" id="1_eeqnh"]
+[ext_resource type="Script" uid="uid://c2783f481p4b5" path="res://Dice.gd" id="1_eeqnh"]
 [ext_resource type="PackedScene" uid="uid://cjd2s7l6r3w" path="res://Assets/GameDice.glb" id="2_1iunv"]
 [ext_resource type="PackedScene" uid="uid://doixwg3l14udg" path="res://raycast3d.tscn" id="3_ms56d"]
 

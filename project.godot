@@ -12,7 +12,7 @@ config_version=5
 
 config/name="YachtCPoker"
 run/main_scene="res://Poker.tscn"
-config/features=PackedStringArray("4.3", "Mobile")
+config/features=PackedStringArray("4.4", "Mobile")
 config/icon="res://icon.svg"
 
 [display]
@@ -24,6 +24,12 @@ window/handheld/orientation=1
 [filesystem]
 
 import/fbx2gltf/enabled=false
+
+[input_devices]
+
+sensors/enable_accelerometer=true
+sensors/enable_gravity=true
+sensors/enable_gyroscope=true
 
 [physics]
 

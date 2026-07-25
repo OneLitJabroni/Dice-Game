@@ -42,23 +42,30 @@ func add_dice(dice_instances: Array):
 
 # Called when the scene is ready
 func _ready():
+	print("World _ready started")
+	
 	# Instantiate the cup
-	var cup_instance = spawn_cup.instantiate()    
-	# Add the cup to the current scene (World node or any parent node)
+	var cup_instance = spawn_cup.instantiate()
+	print("Cup instantiated: ", cup_instance) 
+	
+	cup_instance.position = Vector3(0, 33.752, 76.243)
+	print("Cup position set")
+	
 	add_child(cup_instance)
+	print("Cup added as child")
+	
 	# Defer the transform change to after the node is inside the tree
 	#cup_instance.call_deferred("set_position", Vector3(0, 0, 0))  # Set position for cup
-	cup_instance.position = Vector3(-69, 34, 0)
 	#Instantiate 5 dice and add them as children of the cup
-	for i in range(1):
+	for i in range(5):
 		var dice_instance = spawn_dice.instantiate()
-		## Set positions for dice (you can modify this for random placement)
-		##dice_instance.call_deferred("set_position", Vector3(i * 0.2, 0, 0))  # Adjust the position as needed
-		#
-		## Add each dice as a child of the cup
+		print("Dice instantiated: ", dice_instance)
 		add_child(dice_instance)
-		dice_instance.position = Vector3(-80, 49,0)
+		var offset = Vector3(randf_range(-3, 3), randf_range(5, 10), randf_range(-3, 3))
+		dice_instance.position = cup_instance.position + offset
+		print("Dice ", i, " added at ", dice_instance.position)
 	# Add the dice to the dice_array for later usage
+	print("World _ready finished")
 
 
 	# Connect GUI events for texture rect clicks to select dice
