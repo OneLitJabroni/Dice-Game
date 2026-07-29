@@ -1,76 +1,64 @@
 extends RigidBody3D
 
-# Control variables
-var movement_speed = 3.0
+@export var movement_speed: float = 1.0
+@export var input_threshold: float = 0.5        # minimum movement speed to respond to
+@export var origin_position: Vector3 = Vector3(0, 33.752, 76.243)
+
+@export_group("Sensor Calibration")
+@export var invert_x_axis: bool = true
+@export var invert_y_axis: bool = false
+@export var invert_z_axis: bool = true
+
 var smoothed_accel = Vector3.ZERO
-var input_threshold = 0.0
-var origin_position = Vector3(0, 33.752, 76.243)
-
-# Calibration
-var calibrated_gravity = Vector3.ZERO
-var is_calibrated = false
-var upright_threshold = 0.7
-
+var smoothed_gravity = Vector3.DOWN
 
 func _ready():
-	global_transform.origin = origin_position
-	rotation = Vector3.ZERO
-	freeze = false
-	gravity_scale = 0
-	call_deferred("wait_for_upright")
+	global_position = origin_position
+	basis = Basis.IDENTITY
 
-
-func wait_for_upright():
-	while true:
-		var gravity = Input.get_gravity().normalized()
-		if gravity.length() > 0.1 and abs(gravity.y) > upright_threshold:
-			calibrated_gravity = gravity
-			is_calibrated = true
-			print("Calibrated with gravity: ", calibrated_gravity)
-			break
-		await get_tree().create_timer(0.1).timeout
-
-
-func _physics_process(_delta):
-	# --- Accelerometer Movement ---
+func _physics_process(delta):
 	var accel = Input.get_accelerometer()
 	var gravity = Input.get_gravity()
-	var linear_accel = accel - gravity  # remove gravity component, leaving only real movement
-	smoothed_accel = smoothed_accel.lerp(linear_accel, 0.3)
-	var target_position = origin_position + Vector3(
-		smoothed_accel.x * movement_speed,
-		smoothed_accel.y * movement_speed,
-		smoothed_accel.z * movement_speed
+	
+	# Apply axis inversions based on your Inspector checkboxes
+	var calibrated_gravity = Vector3(
+		-gravity.x if invert_x_axis else gravity.x,
+		-gravity.y if invert_y_axis else gravity.y,
+		-gravity.z if invert_z_axis else gravity.z
+	)
+	
+	var calibrated_accel = Vector3(
+		-accel.x if invert_x_axis else accel.x,
+		-accel.y if invert_y_axis else accel.y,
+		-accel.z if invert_z_axis else accel.z
 	)
 
+	# --- Movement (Your Original Preferred Logic) ---
+	var linear_accel = calibrated_accel - calibrated_gravity
+
+	smoothed_accel = smoothed_accel.lerp(linear_accel, 0.15)
+
+
 	if smoothed_accel.length() > input_threshold:
-		linear_velocity = (target_position - global_position) * 5.0
-	else:
-		linear_velocity = (origin_position - global_position) * 5.0
-
-	# --- Gyroscope Rotation: shortest-arc quaternion from calibrated to current gravity ---
-	if not is_calibrated:
-		return
-
-	var gravity_normalized = gravity.normalized()
-	if gravity.length() < 0.1:
-		return
-
-	# Rotation that takes calibrated_gravity to current gravity
-	var target_quat = Quaternion(gravity_normalized, calibrated_gravity)
-	# We track the cup's own accumulated rotation as a quaternion separately
-	var cup_quat = Quaternion(basis.orthonormalized())
-	
-	# Ensure shortest-path interpolation (avoid double-cover flip)
-	if cup_quat.dot(target_quat) < 0.0:
-		target_quat = -target_quat
+		var target_position = origin_position + Vector3(
+			smoothed_accel.x * movement_speed,
+			smoothed_accel.y * movement_speed,
+			smoothed_accel.z * movement_speed
+		)
 		
-	# Clamp maximum rotation angle from neutral to avoid near-180 instability
-	var neutral_quat = Quaternion(Basis.IDENTITY)
-	var angle_from_neutral = neutral_quat.angle_to(target_quat)
-	var max_angle = deg_to_rad(100)  # tune this - how far the cup can tilt before capping
-	if angle_from_neutral > max_angle:
-		target_quat = neutral_quat.slerp(target_quat, max_angle / angle_from_neutral)
+		transform.origin = transform.origin.lerp(target_position, 15.0 * delta)
+	else:
+		transform.origin = transform.origin.lerp(origin_position, 15.0 * delta)
 
-	var new_quat = cup_quat.slerp(target_quat, 15.0 * _delta)
-	basis = Basis(new_quat).orthonormalized()
+	# --- Rotation (Your Perfect Tilt Logic) ---
+	if calibrated_gravity.length_squared() > 0.1:
+		smoothed_gravity = smoothed_gravity.lerp(calibrated_gravity.normalized(), 10.0 * delta)
+		
+		var target_up = -smoothed_gravity
+		
+		if target_up.is_equal_approx(Vector3.DOWN):
+			target_up = Vector3.DOWN + Vector3(0.001, 0, 0)
+			
+		var target_quat = Quaternion(Vector3.UP, target_up)
+		var current_quat = Quaternion(basis.orthonormalized())
+		basis = Basis(current_quat.slerp(target_quat, 12.0 * delta))

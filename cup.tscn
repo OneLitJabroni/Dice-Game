@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://dvk8yfttm218h"]
+[gd_scene load_steps=7 format=3 uid="uid://dvk8yfttm218h"]
 
 [ext_resource type="Script" uid="uid://ckx85effp2xcx" path="res://cup.gd" id="1_ccct7"]
 [ext_resource type="PackedScene" uid="uid://c385l2hr3s588" path="res://Assets/squareplasticcup.glb" id="2_iqy8j"]
@@ -9,7 +9,13 @@ size = Vector3(8.5, 11.75, 3)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ndagr"]
 margin = 10.0
-size = Vector3(9, 5, 9)
+size = Vector3(9, 4, 9)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_358bg"]
+size = Vector3(8.81958, 1, 8.91284)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_hxhe5"]
+size = Vector3(9, 1, 9)
 
 [node name="cup" type="RigidBody3D"]
 top_level = true
@@ -17,9 +23,6 @@ disable_mode = 2
 collision_layer = 2
 collision_priority = 3.0
 input_ray_pickable = false
-gravity_scale = 0.0
-can_sleep = false
-continuous_cd = true
 script = ExtResource("1_ccct7")
 
 [node name="squareplasticcup" parent="." instance=ExtResource("2_iqy8j")]
@@ -42,5 +45,15 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -5.487
 shape = SubResource("BoxShape3D_t46ex")
 
 [node name="CollisionShape3D5" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.347319, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.847319, 0)
 shape = SubResource("BoxShape3D_ndagr")
+
+[node name="Lid" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0174561, 12.014, 0.0360107)
+shape = SubResource("BoxShape3D_358bg")
+
+[node name="Launcher" type="Area3D" parent="."]
+
+[node name="LauncherCollisionShape3D" type="CollisionShape3D" parent="Launcher"]
+transform = Transform3D(1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, 1, 0, 0.657294, 0)
+shape = SubResource("BoxShape3D_hxhe5")

@@ -59,9 +59,10 @@ func _ready():
 	#Instantiate 5 dice and add them as children of the cup
 	for i in range(5):
 		var dice_instance = spawn_dice.instantiate()
+		dice_instance.mass = 5.0  # increase weight so launch force doesn't fling them wildly
 		print("Dice instantiated: ", dice_instance)
 		add_child(dice_instance)
-		var offset = Vector3(randf_range(-3, 3), randf_range(5, 10), randf_range(-3, 3))
+		var offset = Vector3(randf_range(-2, 2), randf_range(2, 5), randf_range(-2, 2))
 		dice_instance.position = cup_instance.position + offset
 		print("Dice ", i, " added at ", dice_instance.position)
 	# Add the dice to the dice_array for later usage
