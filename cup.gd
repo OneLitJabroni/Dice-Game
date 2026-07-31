@@ -1,6 +1,6 @@
 extends RigidBody3D
 
-@export var movement_speed: float = 1.0
+@export var movement_speed: float = 1.5
 @export var input_threshold: float = 0.5        # minimum movement speed to respond to
 @export var origin_position: Vector3 = Vector3(0, 33.752, 76.243)
 
@@ -12,9 +12,12 @@ extends RigidBody3D
 var smoothed_accel = Vector3.ZERO
 var smoothed_gravity = Vector3.DOWN
 
+
 func _ready():
 	global_position = origin_position
 	basis = Basis.IDENTITY
+	freeze = false
+
 
 func _physics_process(delta):
 	var accel = Input.get_accelerometer()
@@ -41,14 +44,14 @@ func _physics_process(delta):
 
 	if smoothed_accel.length() > input_threshold:
 		var target_position = origin_position + Vector3(
-			smoothed_accel.x * movement_speed,
+			-smoothed_accel.x * movement_speed,
 			smoothed_accel.y * movement_speed,
-			smoothed_accel.z * movement_speed
+			-smoothed_accel.z * movement_speed
 		)
 		
-		transform.origin = transform.origin.lerp(target_position, 15.0 * delta)
+		transform.origin = transform.origin.lerp(target_position, 5.0 * delta)
 	else:
-		transform.origin = transform.origin.lerp(origin_position, 15.0 * delta)
+		transform.origin = transform.origin.lerp(origin_position, 5.0 * delta)
 
 	# --- Rotation (Your Perfect Tilt Logic) ---
 	if calibrated_gravity.length_squared() > 0.1:

@@ -54,6 +54,7 @@ func _ready():
 	add_child(cup_instance)
 	print("Cup added as child")
 	
+	
 	# Defer the transform change to after the node is inside the tree
 	#cup_instance.call_deferred("set_position", Vector3(0, 0, 0))  # Set position for cup
 	#Instantiate 5 dice and add them as children of the cup
@@ -62,7 +63,7 @@ func _ready():
 		dice_instance.mass = 5.0  # increase weight so launch force doesn't fling them wildly
 		print("Dice instantiated: ", dice_instance)
 		add_child(dice_instance)
-		var offset = Vector3(randf_range(-2, 2), randf_range(2, 5), randf_range(-2, 2))
+		var offset = Vector3(randf_range(-4, 4), randf_range(3, 8), randf_range(-4, 4))
 		dice_instance.position = cup_instance.position + offset
 		print("Dice ", i, " added at ", dice_instance.position)
 	# Add the dice to the dice_array for later usage

@@ -35,6 +35,7 @@ sensors/enable_gyroscope=true
 
 common/physics_ticks_per_second=100
 common/physics_jitter_fix=0.0
+3d/physics_engine="GodotPhysics3D"
 common/physics_interpolation=true
 
 [rendering]

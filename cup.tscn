@@ -23,6 +23,9 @@ disable_mode = 2
 collision_layer = 2
 collision_priority = 3.0
 input_ray_pickable = false
+mass = 1000.0
+gravity_scale = 0.0
+continuous_cd = true
 script = ExtResource("1_ccct7")
 
 [node name="squareplasticcup" parent="." instance=ExtResource("2_iqy8j")]

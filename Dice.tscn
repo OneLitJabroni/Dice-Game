@@ -1,8 +1,12 @@
-[gd_scene load_steps=5 format=3 uid="uid://fyr7meo70t3d"]
+[gd_scene load_steps=6 format=3 uid="uid://fyr7meo70t3d"]
 
-[ext_resource type="Script" uid="uid://i8ojsaalhbcv" path="res://Dice.gd" id="1_eeqnh"]
+[ext_resource type="Script" uid="uid://by4psv87w4a0f" path="res://Dice.gd" id="1_eeqnh"]
 [ext_resource type="PackedScene" uid="uid://cjd2s7l6r3w" path="res://Assets/GameDice.glb" id="2_1iunv"]
 [ext_resource type="PackedScene" uid="uid://doixwg3l14udg" path="res://raycast3d.tscn" id="3_ms56d"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_d3qmn"]
+friction = 0.2
+bounce = 0.05
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_uxojv"]
 custom_solver_bias = 1.0
@@ -12,10 +16,10 @@ size = Vector3(1.1, 1.1, 1.1)
 [node name="Dice" type="RigidBody3D"]
 top_level = true
 disable_mode = 2
-collision_mask = 2
+collision_mask = 3
 input_ray_pickable = false
-mass = 6.0
-gravity_scale = 3.0
+mass = 0.05
+physics_material_override = SubResource("PhysicsMaterial_d3qmn")
 can_sleep = false
 continuous_cd = true
 script = ExtResource("1_eeqnh")
