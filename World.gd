@@ -60,13 +60,19 @@ func _ready():
 	#Instantiate 5 dice and add them as children of the cup
 	for i in range(5):
 		var dice_instance = spawn_dice.instantiate()
-		dice_instance.mass = 5.0  # increase weight so launch force doesn't fling them wildly
+		dice_instance.add_to_group("dice_group")
 		print("Dice instantiated: ", dice_instance)
+		
+		# Arrange dice in a small circle pattern to avoid overlap
+		var angle = (TAU / 5) * i
+		var radius = 1.2  # tune based on your cup's interior size
+		var circle_offset = Vector3(cos(angle) * radius, 0, sin(angle) * radius)
+		var height_offset = Vector3(0, 5 + (i * 2.0), 0)  # staggered drop height
+		
 		add_child(dice_instance)
-		var offset = Vector3(randf_range(-4, 4), randf_range(3, 8), randf_range(-4, 4))
-		dice_instance.position = cup_instance.position + offset
+		dice_instance.position = cup_instance.position + circle_offset + height_offset
 		print("Dice ", i, " added at ", dice_instance.position)
-	# Add the dice to the dice_array for later usage
+	
 	print("World _ready finished")
 
 

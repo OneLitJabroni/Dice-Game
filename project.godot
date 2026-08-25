@@ -33,9 +33,14 @@ sensors/enable_gyroscope=true
 
 [physics]
 
-common/physics_ticks_per_second=100
-common/physics_jitter_fix=0.0
+3d/run_on_separate_thread=true
+common/physics_ticks_per_second=240
 3d/physics_engine="GodotPhysics3D"
+3d/default_linear_damp=0.05
+3d/sleep_threshold_linear=0.05
+3d/sleep_threshold_angular=0.00174533
+3d/time_before_sleep=0.3
+3d/solver/solver_iterations=24
 common/physics_interpolation=true
 
 [rendering]
