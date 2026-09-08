@@ -1,18 +1,20 @@
 extends RigidBody3D
 
 @onready var lid = $Lid
-var launch_force = 15.0
+var launch_force = 100.0
 var pour_triggered = false
 
 @export var movement_speed: float = 1.05
 @export var input_threshold: float = 0.25        # minimum movement speed to respond to
-@export var origin_position: Vector3 = Vector3(0, 33.752, 76.243)
+@export var origin_position: Vector3
 
 @export_group("Sensor Calibration")
 @export var invert_x_axis: bool = true
 @export var invert_y_axis: bool = false
 @export var invert_z_axis: bool = true
 
+var last_printed_values = Vector3.ZERO
+var last_printed_smoothed_z = 0.0
 
 var smoothed_accel = Vector3.ZERO
 var smoothed_gravity = Vector3.DOWN
@@ -20,7 +22,7 @@ var previous_position = Vector3.ZERO
 
 
 func _ready():
-	global_position = origin_position
+	origin_position = global_position
 	basis = Basis.IDENTITY
 	freeze = false
 	previous_position = global_position
@@ -60,7 +62,7 @@ func _physics_process(delta):
 	else:
 		transform.origin = transform.origin.lerp(origin_position, 5.0 * delta)
 		
-	print("gravity.y: ", calibrated_gravity.y, " gravity.z: ", calibrated_gravity.z, " accel.y: ", smoothed_accel.y, " accel.z: ", smoothed_accel.z)
+
 
 	# --- Rotation (Your Perfect Tilt Logic) ---
 	if calibrated_gravity.length_squared() > 0.1:
@@ -75,31 +77,38 @@ func _physics_process(delta):
 		var current_quat = Quaternion(basis.orthonormalized())
 		basis = Basis(current_quat.slerp(target_quat, 12.0 * delta))
 		
+		# --- Print only when values change significantly (>= 1.0 unit) ---
+		var current_gravity_check = Vector3(gravity.x, gravity.y, gravity.z)
+		var gravity_change = current_gravity_check.distance_to(last_printed_values)
+		var smoothed_z_change = abs(smoothed_accel.z - last_printed_smoothed_z)
 
+		if gravity_change >= 1.0 or smoothed_z_change >= 1.0:
+			print("gravity: (%.2f, %.2f, %.2f) | smoothed_accel.z: %.2f" % [gravity.x, gravity.y, gravity.z, smoothed_accel.z])
+			last_printed_values = current_gravity_check
+			last_printed_smoothed_z = smoothed_accel.z
+	
+# --- Detect horizontal + forward push gesture --- 
+	var is_horizontal = gravity.z <= -9.0  # phone relatively flat, not tilted forward/back - tune based on testing
+	var is_moving_forward = smoothed_accel.z >= 1 # deliberate forward push - tune based on testing
 
-# --- Detect forward push gesture using raw smoothed acceleration ---
-	var is_pushing_forward = smoothed_accel.z < -3.0  # tune sign/threshold based on testing
-
-	print("smoothed_accel.z: ", smoothed_accel.z, " is_pushing: ", is_pushing_forward, " triggered: ", pour_triggered)
-
-	if is_pushing_forward and not pour_triggered:
+	if is_horizontal and is_moving_forward and not pour_triggered:
 		pour_triggered = true
 		lid.disabled = true
 		launch_dice()
 		
 		
-		
 func launch_dice():
 	var all_dice = get_tree().get_nodes_in_group("dice_group")
-	for die in all_dice:
-		if die.global_position.distance_to(global_position) < 6.0:
-			var forward_dir = -global_transform.basis.z
-			var up_dir = Vector3.UP
-			var launch_dir = (forward_dir * 2 + up_dir * 0.6).normalized()
-			die.apply_central_impulse(launch_dir * launch_force)
-			var random_torque = Vector3(randf_range(-5, 5), randf_range(-5, 5), randf_range(-5, 5))
-			die.apply_torque_impulse(random_torque)
 
+	for die in all_dice:
+		die.freeze = false
+		if die.global_position.distance_to(global_position) < 15.0:
+			var forward_dir = -global_transform.basis.z.normalized()
+			var up_dir = Vector3.UP
+			var launch_dir = (forward_dir * 0.9 + up_dir * 0.6).normalized()
+			die.linear_velocity = launch_dir * launch_force
+			print("Set velocity for ", die.name, " to ", die.linear_velocity)
+			
 	await get_tree().create_timer(1.0).timeout
 	lid.disabled = false
 	pour_triggered = false

@@ -3,6 +3,7 @@ extends Node3D
 @export var spawn_cup: PackedScene = preload("res://cup.tscn") # Reference to the Cup scene
 @export var spawn_dice: PackedScene = preload("res://Dice.tscn") # Reference to the Dice scene
 
+@onready var cup_spawn_point: Marker3D = $CupSpawnPoint
 
 # TextureRect references for dice
 @onready var texture_rect_1 = $CanvasLayer/TextureRect1
@@ -48,22 +49,17 @@ func _ready():
 	var cup_instance = spawn_cup.instantiate()
 	print("Cup instantiated: ", cup_instance) 
 	
-	cup_instance.position = Vector3(0, 33.752, 76.243)
-	print("Cup position set")
-	
+	cup_instance.global_position = cup_spawn_point.global_position
 	add_child(cup_instance)
-	print("Cup added as child")
+
+	print("Cup position set to spawn point: ", cup_instance.global_position)
 	
-	
-	# Defer the transform change to after the node is inside the tree
-	#cup_instance.call_deferred("set_position", Vector3(0, 0, 0))  # Set position for cup
-	#Instantiate 5 dice and add them as children of the cup
 	for i in range(5):
 		var dice_instance = spawn_dice.instantiate()
 		dice_instance.add_to_group("dice_group")
 		print("Dice instantiated: ", dice_instance)
 		
-		# Arrange dice in a small circle pattern to avoid overlap
+		# Arrange dice in a small circle pattern
 		var angle = (TAU / 5) * i
 		var radius = 1.2  # tune based on your cup's interior size
 		var circle_offset = Vector3(cos(angle) * radius, 0, sin(angle) * radius)
