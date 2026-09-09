@@ -1,9 +1,10 @@
 extends Node3D
 
 @export var spawn_cup: PackedScene = preload("res://cup.tscn") # Reference to the Cup scene
-@export var spawn_dice: PackedScene = preload("res://Dice.tscn") # Reference to the Dice scene
+@export var spawn_dice: PackedScene = preload("res://dice.tscn") # Reference to the Dice scene
 
 @onready var cup_spawn_point: Marker3D = $CupSpawnPoint
+
 
 # TextureRect references for dice
 @onready var texture_rect_1 = $CanvasLayer/TextureRect1
@@ -20,7 +21,7 @@ extends Node3D
 @onready var result_label5 = $CanvasLayer/Label5
 
 # Dice / selecting dice array
-var dice_array = []
+var dice_array: Array = []
 var selected_dice = [] # Array to track selected dice
 
 # Roll logic
@@ -37,47 +38,51 @@ var dice_images = {
 	6: preload("res://Assets/DiceIcons/QueenIcon.png"),
 }
 
-# Add dice to the dice array
-func add_dice(dice_instances: Array):
-	dice_array += dice_instances  # Add new dice instances to the array
+
 
 # Called when the scene is ready
 func _ready():
-	print("World _ready started")
-	
+
 	# Instantiate the cup
 	var cup_instance = spawn_cup.instantiate()
-	print("Cup instantiated: ", cup_instance) 
-	
-	cup_instance.global_position = cup_spawn_point.global_position
+	cup_instance.spawn_position = cup_spawn_point.position
 	add_child(cup_instance)
+
+
 
 	print("Cup position set to spawn point: ", cup_instance.global_position)
 	
 	for i in range(5):
 		var dice_instance = spawn_dice.instantiate()
+		print("Instantiated dice - script attached: ", dice_instance.get_script())
+		if dice_instance.has_method("_ready"):
+			print("Die has _ready method")
+		else:
+			print("Die does NOT have _ready method")
 		dice_instance.add_to_group("dice_group")
-		print("Dice instantiated: ", dice_instance)
-		
+		dice_array.append(dice_instance)
+
 		# Arrange dice in a small circle pattern
 		var angle = (TAU / 5) * i
 		var radius = 1.2  # tune based on your cup's interior size
 		var circle_offset = Vector3(cos(angle) * radius, 0, sin(angle) * radius)
 		var height_offset = Vector3(0, 5 + (i * 2.0), 0)  # staggered drop height
-		
+
 		add_child(dice_instance)
 		dice_instance.position = cup_instance.position + circle_offset + height_offset
-		print("Dice ", i, " added at ", dice_instance.position)
+
+	# Allows dice gui to be selectable by touch
+	texture_rect_1.connect("gui_input", Callable(self, "_on_texture_rect_input").bind(dice_array[0], texture_rect_1))
+	texture_rect_2.connect("gui_input", Callable(self, "_on_texture_rect_input").bind(dice_array[1], texture_rect_2))
+	texture_rect_3.connect("gui_input", Callable(self, "_on_texture_rect_input").bind(dice_array[2], texture_rect_3))
+	texture_rect_4.connect("gui_input", Callable(self, "_on_texture_rect_input").bind(dice_array[3], texture_rect_4))
+	texture_rect_5.connect("gui_input", Callable(self, "_on_texture_rect_input").bind(dice_array[4], texture_rect_5))
 	
-	print("World _ready finished")
-
-
-	# Connect GUI events for texture rect clicks to select dice
-	#texture_rect_1.connect("gui_input", Callable(self, "_on_texture_rect_input").bind(dice1, texture_rect_1))
-	#texture_rect_2.connect("gui_input", Callable(self, "_on_texture_rect_input").bind(dice2, texture_rect_2))
-	#texture_rect_3.connect("gui_input", Callable(self, "_on_texture_rect_input").bind(dice3, texture_rect_3))
-	#texture_rect_4.connect("gui_input", Callable(self, "_on_texture_rect_input").bind(dice4, texture_rect_4))
-	# texture_rect_5.connect("gui_input", Callable(self, "_on_texture_rect_input").bind(dice5, texture_rect_5))
+	dice_array[0].connect("roll_finished", Callable(self, "_on_dice_1_roll_finished"))
+	dice_array[1].connect("roll_finished", Callable(self, "_on_dice_2_roll_finished"))
+	dice_array[2].connect("roll_finished", Callable(self, "_on_dice_3_roll_finished"))
+	dice_array[3].connect("roll_finished", Callable(self, "_on_dice_4_roll_finished"))
+	dice_array[4].connect("roll_finished", Callable(self, "_on_dice_5_roll_finished"))
 
 # Function to handle input for selecting/deselecting dice
 func _on_texture_rect_input(event: InputEvent, dice_node: RigidBody3D, texture_rect: TextureRect):
@@ -96,7 +101,6 @@ func _input(event):
 	if event.is_action_pressed("ui_accept"):  # Trigger the roll action (e.g., Enter or Space)
 		if rolls_left > 0:  # Check if the player still has rolls left
 			if first_roll:
-				roll_all_dice()  # Roll all dice on the first roll
 				first_roll = false  # Set the flag to false after the first roll
 			else:
 				roll_selected_dice()  # Roll only selected dice
@@ -105,9 +109,6 @@ func _input(event):
 		else:
 			print("No more rolls left!")  # If no rolls are left, show a message
 
-# Function to roll all dice (for the first roll)
-func roll_all_dice():
-	get_tree().call_group("dice_group", "roll")
 
 # Function to roll only the selected dice
 func roll_selected_dice():

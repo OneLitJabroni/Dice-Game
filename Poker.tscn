@@ -216,88 +216,127 @@ omni_range = 94.623
 layer = 2
 
 [node name="Label1" type="Label" parent="CanvasLayer"]
-offset_left = 229.0
-offset_top = 285.0
-offset_right = 269.0
-offset_bottom = 308.0
+anchors_preset = -1
+anchor_right = 0.0990741
+anchor_bottom = 0.0557292
+offset_left = 215.0
+offset_top = 8.0
+offset_right = 255.0
+offset_bottom = 31.0
 metadata/_edit_use_anchors_ = true
 
 [node name="Label2" type="Label" parent="CanvasLayer"]
-offset_left = 483.0
-offset_top = 275.0
-offset_right = 523.0
-offset_bottom = 298.0
+anchors_preset = -1
+anchor_right = 0.116667
+anchor_bottom = 0.065625
+offset_left = 279.0
+offset_top = 144.0
+offset_right = 319.0
+offset_bottom = 167.0
 metadata/_edit_use_anchors_ = true
 
 [node name="Label3" type="Label" parent="CanvasLayer"]
-offset_left = 591.0
-offset_top = 276.0
-offset_right = 631.0
-offset_bottom = 299.0
+anchors_preset = -1
+anchor_right = 0.166667
+anchor_bottom = 0.0625
+offset_left = 271.0
+offset_top = 247.0
+offset_right = 311.0
+offset_bottom = 270.0
 metadata/_edit_use_anchors_ = true
 
 [node name="Label4" type="Label" parent="CanvasLayer"]
-offset_left = 743.0
-offset_top = 263.0
-offset_right = 783.0
-offset_bottom = 286.0
+anchors_preset = -1
+anchor_right = 0.218519
+anchor_bottom = 0.09375
+offset_left = 289.0
+offset_top = 197.0
+offset_right = 329.0
+offset_bottom = 220.0
 metadata/_edit_use_anchors_ = true
 
 [node name="Label5" type="Label" parent="CanvasLayer"]
-offset_left = 882.0
-offset_top = 246.0
-offset_right = 922.0
-offset_bottom = 269.0
-metadata/_edit_use_anchors_ = true
-
-[node name="Roll" type="Button" parent="CanvasLayer"]
-offset_right = 8.0
-offset_bottom = 8.0
+anchors_preset = -1
+anchor_right = 0.201852
+anchor_bottom = 0.127604
+offset_left = 522.0
+offset_top = 352.0
+offset_right = 562.0
+offset_bottom = 375.0
 metadata/_edit_use_anchors_ = true
 
 [node name="Reroll" type="Button" parent="CanvasLayer"]
-offset_right = 8.0
-offset_bottom = 8.0
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 5.0
+offset_top = -1.0
+offset_right = 5.0
+offset_bottom = 30.0
+grow_horizontal = 2
+scale = Vector2(1, 3)
+text = "Re-Roll"
 metadata/_edit_use_anchors_ = true
 
 [node name="TextureRect1" type="TextureRect" parent="CanvasLayer"]
-offset_left = 301.0
-offset_top = 436.0
-offset_right = 365.0
-offset_bottom = 490.0
-stretch_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -515.0
+offset_right = -515.0
+grow_horizontal = 2
+grow_vertical = 0
 metadata/_edit_use_anchors_ = true
 
 [node name="TextureRect2" type="TextureRect" parent="CanvasLayer"]
-offset_left = 402.0
-offset_top = 430.0
-offset_right = 466.0
-offset_bottom = 484.0
-stretch_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -265.0
+offset_right = -265.0
+grow_horizontal = 2
+grow_vertical = 0
 metadata/_edit_use_anchors_ = true
 
 [node name="TextureRect3" type="TextureRect" parent="CanvasLayer"]
-offset_left = 489.0
-offset_top = 424.0
-offset_right = 553.0
-offset_bottom = 478.0
-stretch_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -8.0
+offset_right = -8.0
+grow_horizontal = 2
+grow_vertical = 0
 metadata/_edit_use_anchors_ = true
 
 [node name="TextureRect4" type="TextureRect" parent="CanvasLayer"]
-offset_left = 585.0
-offset_top = 428.0
-offset_right = 649.0
-offset_bottom = 482.0
-stretch_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 230.0
+offset_top = 2.0
+offset_right = 230.0
+offset_bottom = 2.0
+grow_horizontal = 2
+grow_vertical = 0
 metadata/_edit_use_anchors_ = true
 
 [node name="TextureRect5" type="TextureRect" parent="CanvasLayer"]
-offset_left = 685.0
-offset_top = 426.0
-offset_right = 749.0
-offset_bottom = 480.0
-stretch_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 454.0
+offset_right = 454.0
+grow_horizontal = 2
+grow_vertical = 0
 metadata/_edit_use_anchors_ = true
 
 [node name="PlayerCam" type="Camera3D" parent="."]

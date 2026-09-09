@@ -1,5 +1,7 @@
 extends RigidBody3D
 
+@export var spawn_position: Vector3
+
 @onready var lid = $Lid
 var launch_force = 100.0
 var pour_triggered = false
@@ -22,7 +24,10 @@ var previous_position = Vector3.ZERO
 
 
 func _ready():
+	if spawn_position != Vector3.ZERO:
+		global_position = spawn_position
 	origin_position = global_position
+	print("Cup ready, origin_position captured as: ", origin_position)
 	basis = Basis.IDENTITY
 	freeze = false
 	previous_position = global_position
@@ -83,7 +88,6 @@ func _physics_process(delta):
 		var smoothed_z_change = abs(smoothed_accel.z - last_printed_smoothed_z)
 
 		if gravity_change >= 1.0 or smoothed_z_change >= 1.0:
-			print("gravity: (%.2f, %.2f, %.2f) | smoothed_accel.z: %.2f" % [gravity.x, gravity.y, gravity.z, smoothed_accel.z])
 			last_printed_values = current_gravity_check
 			last_printed_smoothed_z = smoothed_accel.z
 	
@@ -107,7 +111,6 @@ func launch_dice():
 			var up_dir = Vector3.UP
 			var launch_dir = (forward_dir * 0.9 + up_dir * 0.6).normalized()
 			die.linear_velocity = launch_dir * launch_force
-			print("Set velocity for ", die.name, " to ", die.linear_velocity)
 			
 	await get_tree().create_timer(1.0).timeout
 	lid.disabled = false
