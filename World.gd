@@ -4,6 +4,11 @@ extends Node3D
 @export var spawn_dice: PackedScene = preload("res://dice.tscn") # Reference to the Dice scene
 
 @onready var cup_spawn_point: Marker3D = $CupSpawnPoint
+@onready var reroll_button: Button = $CanvasLayer/Reroll
+@onready var table_cam_button: Button = $CanvasLayer/TableCam  # adjust path
+@onready var table_cam: Camera3D = $TableCam  # adjust path
+@onready var player_cam: Camera3D = $PlayerCam  # your existing gesture-follow camera, adjust name/path
+
 
 
 # TextureRect references for dice
@@ -42,6 +47,10 @@ var dice_images = {
 
 # Called when the scene is ready
 func _ready():
+	
+		# ... existing connections
+	table_cam_button.connect("pressed", Callable(self, "_on_table_cam_pressed"))
+
 
 	# Instantiate the cup
 	var cup_instance = spawn_cup.instantiate()
@@ -70,6 +79,9 @@ func _ready():
 
 		add_child(dice_instance)
 		dice_instance.position = cup_instance.position + circle_offset + height_offset
+		
+		
+	reroll_button.connect("pressed", Callable(self, "_on_reroll_pressed"))
 
 	# Allows dice gui to be selectable by touch
 	texture_rect_1.connect("gui_input", Callable(self, "_on_texture_rect_input").bind(dice_array[0], texture_rect_1))
@@ -83,6 +95,16 @@ func _ready():
 	dice_array[2].connect("roll_finished", Callable(self, "_on_dice_3_roll_finished"))
 	dice_array[3].connect("roll_finished", Callable(self, "_on_dice_4_roll_finished"))
 	dice_array[4].connect("roll_finished", Callable(self, "_on_dice_5_roll_finished"))
+	
+	
+	
+func _on_table_cam_pressed():
+	if table_cam.current:
+		player_cam.current = true
+		table_cam_button.text = "Table Cam"
+	else:
+		table_cam.current = true
+		table_cam_button.text = "Player Cam"
 
 # Function to handle input for selecting/deselecting dice
 func _on_texture_rect_input(event: InputEvent, dice_node: RigidBody3D, texture_rect: TextureRect):
@@ -112,9 +134,44 @@ func _input(event):
 
 # Function to roll only the selected dice
 func roll_selected_dice():
-	for dice in selected_dice:
-		if dice.has_method("roll"):  # Call roll method on dice instances
-			dice.roll()
+	print("roll_selected_dice called, selected count: ", selected_dice.size())
+	print("cup_spawn_point position: ", cup_spawn_point.position)
+
+	var i = 0
+	for die in selected_dice:
+		var angle = (TAU / selected_dice.size()) * i
+		var radius = 1.2
+		var circle_offset = Vector3(cos(angle) * radius, 0, sin(angle) * radius)
+		var height_offset = Vector3(0, 1 + (i * 0.5), 0)
+		
+		die.freeze = false
+		die.sleeping = false
+		die.linear_velocity = Vector3.ZERO
+		die.angular_velocity = Vector3.ZERO
+		die.global_position = cup_spawn_point.position + circle_offset + height_offset
+		
+		i += 1
+	
+	# Clear selection highlighting after reroll
+	for die in selected_dice:
+		var index = dice_array.find(die)
+		match index:
+			0: texture_rect_1.modulate = Color(1, 1, 1)
+			1: texture_rect_2.modulate = Color(1, 1, 1)
+			2: texture_rect_3.modulate = Color(1, 1, 1)
+			3: texture_rect_4.modulate = Color(1, 1, 1)
+			4: texture_rect_5.modulate = Color(1, 1, 1)
+	selected_dice.clear()
+
+
+func _on_reroll_pressed():
+	if rolls_left > 0:
+		roll_selected_dice()
+		rolls_left -= 1
+		print("Rolls left: ", rolls_left)
+	else:
+		print("No more rolls left!")
+
 
 # Update the visual feedback for selected dice (e.g., change color to yellow when selected)
 func _on_dice_1_roll_finished(value):

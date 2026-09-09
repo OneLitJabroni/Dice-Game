@@ -1,8 +1,9 @@
-[gd_scene load_steps=15 format=3 uid="uid://c5a6rx67c6xxq"]
+[gd_scene load_steps=16 format=3 uid="uid://c5a6rx67c6xxq"]
 
 [ext_resource type="Script" uid="uid://cuvfth30yuru4" path="res://World.gd" id="1_ycptu"]
 [ext_resource type="PackedScene" uid="uid://cqoh56doij3mi" path="res://Assets/Dicepokertable2.glb" id="2_yrfif"]
 [ext_resource type="PackedScene" uid="uid://ddstktsaoj7pq" path="res://Assets/Floor.glb" id="5_emtod"]
+[ext_resource type="Script" uid="uid://bkkn2jii6v44q" path="res://table_cam.gd" id="5_llbn4"]
 [ext_resource type="PackedScene" uid="uid://b1gbe4rjfqmbe" path="res://Assets/Wall.glb" id="6_gmkbp"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ivgg2"]
@@ -86,7 +87,7 @@ shape = SubResource("BoxShape3D_b3pbq")
 transform = Transform3D(0.536534, 0, -0.843879, 0, 1, 0, 0.843879, 0, 0.536534, -1.83974, 0.180496, -0.00613136)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="tableStaticBody"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.29745, 1.12625, -0.138519)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.68768, 1.12625, -0.138519)
 shape = SubResource("BoxShape3D_6nqh1")
 
 [node name="floorStaticBody" type="StaticBody3D" parent="."]
@@ -266,16 +267,29 @@ offset_bottom = 375.0
 metadata/_edit_use_anchors_ = true
 
 [node name="Reroll" type="Button" parent="CanvasLayer"]
-anchors_preset = 10
-anchor_right = 1.0
-offset_left = 5.0
-offset_top = -1.0
-offset_right = 5.0
-offset_bottom = 30.0
+anchors_preset = -1
+anchor_top = -0.149479
+anchor_right = 0.219444
+anchor_bottom = -0.136979
+offset_left = -1.0
+offset_top = 510.0
+offset_right = -1.0
+offset_bottom = 541.0
 grow_horizontal = 2
 scale = Vector2(1, 3)
+toggle_mode = true
+action_mode = 0
 text = "Re-Roll"
 metadata/_edit_use_anchors_ = true
+
+[node name="TableCam" type="Button" parent="CanvasLayer"]
+offset_left = 235.0
+offset_top = 224.0
+offset_right = 464.0
+offset_bottom = 391.0
+toggle_mode = true
+action_mode = 0
+text = "Table Camera"
 
 [node name="TextureRect1" type="TextureRect" parent="CanvasLayer"]
 anchors_preset = 7
@@ -341,10 +355,12 @@ metadata/_edit_use_anchors_ = true
 
 [node name="PlayerCam" type="Camera3D" parent="."]
 transform = Transform3D(0.99978, -0.0112876, 0.0176905, 0.00340702, 0.919139, 0.393919, -0.0207064, -0.393772, 0.918975, 1.11916, 61.7121, 87.0699)
+current = true
 
 [node name="CupSpawnPoint" type="Marker3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 41.1672, 59.4821)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 37.9311, 62.0398)
 
 [node name="TableCam" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.0540266, 0.99854, 0, -0.99854, 0.0540266, 0, 72.0721, 3.86766)
 fov = 99.0
+script = ExtResource("5_llbn4")

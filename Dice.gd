@@ -5,20 +5,16 @@ extends RigidBody3D
 signal roll_finished(value)
 
 func _ready():
-	print("!!!!!!!! DICE READY FIRED !!!!!!!!")
 	sleeping = false
 	
-func _physics_process(_delta):
-	if sleeping:
-		print(name, " IS SLEEPING (checked via physics_process)")
+
+
+
 
 func _on_sleeping_state_changed():
-	print(name, " sleeping state changed, sleeping = ", sleeping)
 	if sleeping:
 		for raycast in raycasts:
-			print(" - checking raycast: ", raycast.name, " colliding: ", raycast.is_colliding())
 			if raycast.is_colliding():
-				print(" - EMITTING roll_finished with value: ", raycast.opposite_side)
 				roll_finished.emit(raycast.opposite_side)
 			
 
