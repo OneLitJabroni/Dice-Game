@@ -3,7 +3,7 @@ extends RigidBody3D
 @export var spawn_position: Vector3
 
 @onready var lid = $Lid
-var launch_force = 100.0
+var launch_force = 50.0
 var pour_triggered = false
 
 @export var movement_speed: float = 1.05
@@ -109,7 +109,7 @@ func launch_dice():
 		if die.global_position.distance_to(global_position) < 15.0:
 			var forward_dir = -global_transform.basis.z.normalized()
 			var up_dir = Vector3.UP
-			var launch_dir = (forward_dir * 0.9 + up_dir * 0.6).normalized()
+			var launch_dir = (forward_dir * 0.9 + up_dir * 0.5).normalized()
 			die.linear_velocity = launch_dir * launch_force
 			
 	await get_tree().create_timer(1.0).timeout

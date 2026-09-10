@@ -289,37 +289,37 @@ toggle_mode = true
 action_mode = 0
 text = "Table Camera"
 
-[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer"]
-anchors_preset = -1
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-offset_top = 610.0
-offset_bottom = 756.0
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_horizontal = 3
+[node name="VBoxContainer2" type="VBoxContainer" parent="CanvasLayer"]
+offset_left = 6.0
+offset_top = 548.0
+offset_right = 280.0
+offset_bottom = 1689.0
+theme_override_constants/separation = 10
+
+[node name="TextureRect1" type="TextureRect" parent="CanvasLayer/VBoxContainer2"]
+texture_repeat = 1
+layout_mode = 2
 size_flags_vertical = 3
-theme_override_constants/separation = 3
-
-[node name="TextureRect1" type="TextureRect" parent="CanvasLayer/HBoxContainer"]
-layout_mode = 2
 metadata/_edit_use_anchors_ = true
 
-[node name="TextureRect2" type="TextureRect" parent="CanvasLayer/HBoxContainer"]
+[node name="TextureRect2" type="TextureRect" parent="CanvasLayer/VBoxContainer2"]
 layout_mode = 2
+size_flags_vertical = 3
 metadata/_edit_use_anchors_ = true
 
-[node name="TextureRect3" type="TextureRect" parent="CanvasLayer/HBoxContainer"]
+[node name="TextureRect3" type="TextureRect" parent="CanvasLayer/VBoxContainer2"]
 layout_mode = 2
+size_flags_vertical = 3
 metadata/_edit_use_anchors_ = true
 
-[node name="TextureRect4" type="TextureRect" parent="CanvasLayer/HBoxContainer"]
+[node name="TextureRect4" type="TextureRect" parent="CanvasLayer/VBoxContainer2"]
 layout_mode = 2
+size_flags_vertical = 3
 metadata/_edit_use_anchors_ = true
 
-[node name="TextureRect5" type="TextureRect" parent="CanvasLayer/HBoxContainer"]
+[node name="TextureRect5" type="TextureRect" parent="CanvasLayer/VBoxContainer2"]
 layout_mode = 2
+size_flags_vertical = 3
 metadata/_edit_use_anchors_ = true
 
 [node name="PlayerCam" type="Camera3D" parent="."]

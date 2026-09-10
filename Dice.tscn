@@ -15,10 +15,9 @@ disable_mode = 1
 collision_mask = 3
 input_ray_pickable = false
 mass = 0.004
-gravity_scale = 2.0
 continuous_cd = true
-linear_damp = 0.25
-angular_damp = 0.25
+linear_damp = 0.1
+angular_damp = 0.1
 script = ExtResource("1_qu4n6")
 
 [node name="GameDice" parent="." instance=ExtResource("2_xak8u")]

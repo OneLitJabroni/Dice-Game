@@ -12,11 +12,11 @@ extends Node3D
 
 
 # TextureRect references for dice
-@onready var texture_rect_1 = $CanvasLayer/HBoxContainer/TextureRect1
-@onready var texture_rect_2 = $CanvasLayer/HBoxContainer/TextureRect2
-@onready var texture_rect_3 = $CanvasLayer/HBoxContainer/TextureRect3
-@onready var texture_rect_4 = $CanvasLayer/HBoxContainer/TextureRect4
-@onready var texture_rect_5 = $CanvasLayer/HBoxContainer/TextureRect5
+@onready var texture_rect_1 = $CanvasLayer/VBoxContainer2/TextureRect1
+@onready var texture_rect_2 = $CanvasLayer/VBoxContainer2/TextureRect2
+@onready var texture_rect_3 = $CanvasLayer/VBoxContainer2/TextureRect3
+@onready var texture_rect_4 = $CanvasLayer/VBoxContainer2/TextureRect4
+@onready var texture_rect_5 = $CanvasLayer/VBoxContainer2/TextureRect5
 
 # Label references for results
 @onready var result_label1 = $CanvasLayer/Label1
