@@ -15,6 +15,10 @@ run/main_scene="uid://bp6vi0tkxtx15"
 config/features=PackedStringArray("4.4", "Mobile")
 config/icon="res://icon.svg"
 
+[autoload]
+
+Sensors="*res://Sensors.gd"
+
 [display]
 
 window/size/viewport_width=1080
@@ -45,5 +49,6 @@ common/physics_interpolation=true
 
 [rendering]
 
-renderer/rendering_method="mobile"
+renderer/rendering_method="gl_compatibility"
+renderer/rendering_method.mobile="gl_compatibility"
 textures/vram_compression/import_etc2_astc=true

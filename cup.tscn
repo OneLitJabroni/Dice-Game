@@ -23,6 +23,13 @@ gravity_scale = 0.0
 continuous_cd = true
 linear_damp = 0.3
 script = ExtResource("1_ccct7")
+spawn_position = null
+movement_speed = null
+input_threshold = null
+origin_position = null
+invert_x_axis = null
+invert_y_axis = null
+invert_z_axis = null
 
 [node name="squareplasticcup" parent="." instance=ExtResource("2_iqy8j")]
 transform = Transform3D(4.5, 0, 0, 0, 5.75, 0, 0, 0, 4.5, 0, 0, 0)

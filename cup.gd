@@ -32,10 +32,10 @@ func _ready():
 	freeze = false
 	previous_position = global_position
 
-
+# Var accel and gravity both changed to Sensors.get from Input.get
 func _physics_process(delta):
-	var accel = Input.get_accelerometer()
-	var gravity = Input.get_gravity()
+	var accel = Sensors.get_accelerometer()
+	var gravity = Sensors.get_gravity()
 	
 	# Apply axis inversions based on your Inspector checkboxes
 	var calibrated_gravity = Vector3(

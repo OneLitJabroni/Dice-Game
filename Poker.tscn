@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://c5a6rx67c6xxq"]
+[gd_scene load_steps=17 format=3 uid="uid://c5a6rx67c6xxq"]
 
 [ext_resource type="Script" uid="uid://cuvfth30yuru4" path="res://World.gd" id="1_ycptu"]
 [ext_resource type="PackedScene" uid="uid://cqoh56doij3mi" path="res://Assets/Dicepokertable2.glb" id="2_yrfif"]
@@ -34,6 +34,8 @@ size = Vector3(2.31183, 0.166992, 2.12888)
 size = Vector3(5.14133, 0.743286, 1.29282)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_orimb"]
+
+[sub_resource type="Environment" id="Environment_llbn4"]
 
 [node name="World" type="Node3D"]
 script = ExtResource("1_ycptu")
@@ -194,24 +196,6 @@ transform = Transform3D(-0.00357791, 0, -0.999994, 0, 1, 0, 0.999994, 0, -0.0035
 [node name="Wall5" parent="wallStaticBody" instance=ExtResource("6_gmkbp")]
 transform = Transform3D(0.0102274, 0, 0.999948, 0, 1, 0, -0.999948, 0, 0.0102274, 29.5645, 0, 12.5843)
 
-[node name="WorldLight" type="OmniLight3D" parent="."]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 40.453, 0)
-light_energy = 5.0
-light_size = 0.333
-omni_range = 94.623
-
-[node name="WorldLight3" type="OmniLight3D" parent="WorldLight"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -46.8086, 10.531, 0)
-light_energy = 5.0
-light_size = 0.333
-omni_range = 94.623
-
-[node name="WorldLight2" type="OmniLight3D" parent="WorldLight"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 44.9107, 9.3102, 0)
-light_energy = 5.0
-light_size = 0.333
-omni_range = 94.623
-
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 layer = 2
 
@@ -333,3 +317,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 37.9311, 62.0398)
 transform = Transform3D(1, 0, 0, 0, 0.0540266, 0.99854, 0, -0.99854, 0.0540266, 0, 72.0721, 3.86766)
 fov = 99.0
 script = ExtResource("5_llbn4")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_llbn4")
