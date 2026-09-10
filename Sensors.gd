@@ -1,6 +1,7 @@
 extends Node
 # Autoload named "Sensors". Drop-in replacement for Input.get_accelerometer(),
 # Input.get_gravity() and Input.get_gyroscope() that also works in web exports.
+# On web, values are remapped to match what Godot reports on Android.
  
 var _web := false
  
@@ -8,24 +9,36 @@ func _ready() -> void:
 	if OS.has_feature("web"):
 		_web = true
 		JavaScriptBridge.eval("""
-			window._gdAccel = {x:0, y:0, z:0};   // includes gravity
-			window._gdGrav  = {x:0, y:0, z:0};   // gravity only
+			window._gdAccel = {x:0, y:0, z:0};
+			window._gdGrav  = {x:0, y:0, z:0};
 			window._gdGyro  = {x:0, y:0, z:0};
+ 
+			// Rotate for screen orientation (like Godot does on Android),
+			// then apply Godot's Android sign convention (-x, y, -z).
+			function toGodot(x, y, z) {
+				var ang = (screen.orientation && screen.orientation.angle) || 0;
+				var rx = x, ry = y;
+				if (ang === 90)       { rx = -y; ry =  x; }
+				else if (ang === 180) { rx = -x; ry = -y; }
+				else if (ang === 270) { rx =  y; ry = -x; }
+				return {x: -rx, y: ry, z: -z};
+			}
+ 
 			window.addEventListener('devicemotion', function (e) {
 				var ag = e.accelerationIncludingGravity;
 				var a  = e.acceleration;
 				if (ag) {
-					window._gdAccel = {x: ag.x || 0, y: ag.y || 0, z: ag.z || 0};
+					window._gdAccel = toGodot(ag.x || 0, ag.y || 0, ag.z || 0);
 					if (a) {
-						window._gdGrav = {x: (ag.x || 0) - (a.x || 0),
-										  y: (ag.y || 0) - (a.y || 0),
-										  z: (ag.z || 0) - (a.z || 0)};
+						window._gdGrav = toGodot((ag.x || 0) - (a.x || 0),
+												 (ag.y || 0) - (a.y || 0),
+												 (ag.z || 0) - (a.z || 0));
 					} else {
 						window._gdGrav = window._gdAccel;
 					}
 				}
 				var r = e.rotationRate;
-				if (r) window._gdGyro = {x: r.beta || 0, y: r.gamma || 0, z: r.alpha || 0};
+				if (r) window._gdGyro = toGodot(r.beta || 0, r.gamma || 0, r.alpha || 0);
 			});
 		""", true)
  
@@ -56,4 +69,3 @@ func request_ios_permission() -> void:
 				DeviceMotionEvent.requestPermission();
 			}
 		""", true)
- 
