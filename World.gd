@@ -4,19 +4,19 @@ extends Node3D
 @export var spawn_dice: PackedScene = preload("res://dice.tscn") # Reference to the Dice scene
 
 @onready var cup_spawn_point: Marker3D = $CupSpawnPoint
-@onready var reroll_button: Button = $CanvasLayer/Reroll
-@onready var table_cam_button: Button = $CanvasLayer/TableCam  # adjust path
+@onready var reroll_button: Button = $CanvasLayer/VBoxContainer/Reroll
+@onready var table_cam_button: Button = $CanvasLayer/VBoxContainer/TableCam  # adjust path
 @onready var table_cam: Camera3D = $TableCam  # adjust path
 @onready var player_cam: Camera3D = $PlayerCam  # your existing gesture-follow camera, adjust name/path
 
 
 
 # TextureRect references for dice
-@onready var texture_rect_1 = $CanvasLayer/TextureRect1
-@onready var texture_rect_2 = $CanvasLayer/TextureRect2
-@onready var texture_rect_3 = $CanvasLayer/TextureRect3
-@onready var texture_rect_4 = $CanvasLayer/TextureRect4
-@onready var texture_rect_5 = $CanvasLayer/TextureRect5
+@onready var texture_rect_1 = $CanvasLayer/HBoxContainer/TextureRect1
+@onready var texture_rect_2 = $CanvasLayer/HBoxContainer/TextureRect2
+@onready var texture_rect_3 = $CanvasLayer/HBoxContainer/TextureRect3
+@onready var texture_rect_4 = $CanvasLayer/HBoxContainer/TextureRect4
+@onready var texture_rect_5 = $CanvasLayer/HBoxContainer/TextureRect5
 
 # Label references for results
 @onready var result_label1 = $CanvasLayer/Label1
