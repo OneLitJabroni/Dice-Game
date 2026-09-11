@@ -4,7 +4,7 @@
 // Incrementing CACHE_VERSION will kick off the install event and force
 // previously cached resources to be updated from the network.
 /** @type {string} */
-const CACHE_VERSION = '1789083146|49340105';
+const CACHE_VERSION = '1789090266|236037339';
 /** @type {string} */
 const CACHE_PREFIX = 'YachtCPoker-sw-cache-';
 const CACHE_NAME = CACHE_PREFIX + CACHE_VERSION;
