@@ -21,7 +21,7 @@ func _ready() -> void:
 				if (ang === 90)       { rx = -y; ry =  x; }
 				else if (ang === 180) { rx = -x; ry = -y; }
 				else if (ang === 270) { rx =  y; ry = -x; }
-				return {x: -rx, y: ry, z: -z};
+				return {x: -rx, y: ry, z: z};
 			}
  
 			window.addEventListener('devicemotion', function (e) {
@@ -68,4 +68,15 @@ func request_ios_permission() -> void:
 				typeof DeviceMotionEvent.requestPermission === 'function') {
 				DeviceMotionEvent.requestPermission();
 			}
+		""", true)
+		
+func lock_portrait() -> void:
+	if _web:
+		JavaScriptBridge.eval("""
+			var el = document.documentElement;
+			var p = el.requestFullscreen ? el.requestFullscreen() : Promise.resolve();
+			p.then(function () {
+				if (screen.orientation && screen.orientation.lock)
+					return screen.orientation.lock('portrait');
+			}).catch(function () {});
 		""", true)
