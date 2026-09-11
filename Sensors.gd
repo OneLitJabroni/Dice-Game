@@ -4,7 +4,9 @@ extends Node
 # On web, values are remapped to match what Godot reports on Android.
  
 var _web := false
- 
+var _locked :=false 
+
+
 func _ready() -> void:
 	if OS.has_feature("web"):
 		_web = true
@@ -18,9 +20,9 @@ func _ready() -> void:
 			function toGodot(x, y, z) {
 				var ang = (screen.orientation && screen.orientation.angle) || 0;
 				var rx = x, ry = y;
-				if (ang === 90)       { rx = -y; ry =  x; }
-				else if (ang === 180) { rx = -x; ry = -y; }
-				else if (ang === 270) { rx =  y; ry = -x; }
+				if (ang === 90)       { rx = y; ry =  x; }
+				else if (ang === 180) { rx = -x; ry = y; }
+				else if (ang === 270) { rx =  -y; ry = -x; }
 				return {x: -rx, y: ry, z: z};
 			}
  
@@ -40,6 +42,19 @@ func _ready() -> void:
 				var r = e.rotationRate;
 				if (r) window._gdGyro = toGodot(r.beta || 0, r.gamma || 0, r.alpha || 0);
 			});
+		""", true)
+		
+		
+func _input(event: InputEvent) -> void:
+	if _web and not _locked and event is InputEventScreenTouch and event.pressed:
+		_locked = true
+		JavaScriptBridge.eval("""
+			var el = document.documentElement;
+			var p = el.requestFullscreen ? el.requestFullscreen() : Promise.resolve();
+			p.then(function () {
+				if (screen.orientation && screen.orientation.lock)
+					return screen.orientation.lock('portrait');
+			}).catch(function () {});
 		""", true)
  
 func _read(name: String) -> Vector3:
@@ -70,13 +85,3 @@ func request_ios_permission() -> void:
 			}
 		""", true)
 		
-func lock_portrait() -> void:
-	if _web:
-		JavaScriptBridge.eval("""
-			var el = document.documentElement;
-			var p = el.requestFullscreen ? el.requestFullscreen() : Promise.resolve();
-			p.then(function () {
-				if (screen.orientation && screen.orientation.lock)
-					return screen.orientation.lock('portrait');
-			}).catch(function () {});
-		""", true)
