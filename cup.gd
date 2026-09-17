@@ -67,7 +67,7 @@ func _physics_process(delta):
 	else:
 		transform.origin = transform.origin.lerp(origin_position, 5.0 * delta)
 		
-
+	print("web gravity: ", Sensors.get_gravity())
 
 	# --- Rotation (Your Perfect Tilt Logic) ---
 	if calibrated_gravity.length_squared() > 0.1:
