@@ -199,7 +199,7 @@ transform = Transform3D(0.0102274, 0, 0.999948, 0, 1, 0, -0.999948, 0, 0.0102274
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 layer = 2
 
-[node name="Label1" type="Label" parent="CanvasLayer"]
+[node name="DebugLabel" type="Label" parent="CanvasLayer"]
 anchors_preset = -1
 anchor_right = 0.0990741
 anchor_bottom = 0.0557292

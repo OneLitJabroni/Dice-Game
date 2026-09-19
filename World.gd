@@ -18,6 +18,7 @@ extends Node3D
 @onready var texture_rect_4 = $CanvasLayer/VBoxContainer2/TextureRect4
 @onready var texture_rect_5 = $CanvasLayer/VBoxContainer2/TextureRect5
 
+@onready var debug_label: Label = $CanvasLayer/DebugLabel
 # Label references for results
 @onready var result_label1 = $CanvasLayer/Label1
 @onready var result_label2 = $CanvasLayer/Label2
@@ -99,6 +100,12 @@ func _ready():
 	
 	
 func _on_table_cam_pressed():
+	
+	if debug_label:
+		var g = Sensors.get_gravity()
+		debug_label.text = "gravity: (%.2f, %.2f, %.2f)" % [g.x, g.y, g.z]
+	
+	
 	if table_cam.current:
 		player_cam.current = true
 		table_cam_button.text = "Table Cam"
