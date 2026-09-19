@@ -32,11 +32,11 @@ func _ready() -> void:
 				if (ag) {
 					window._gdAccel = toGodot(ag.x || 0, ag.y || 0, ag.z || 0);
 					if (a) {
-						window._gdGrav = toGodot((ag.x || 0) - (a.x || 0),
-												 (ag.y || 0) - (a.y || 0),
-												 (ag.z || 0) - (a.z || 0));
+						window._gdGrav = toGodot(-((ag.x || 0) - (a.x || 0)),
+												 ((ag.y || 0) - (a.y || 0)),
+												 -((ag.z || 0) - (a.z || 0)));
 					} else {
-						window._gdGrav = window._gdAccel;
+						window._gdGrav = toGodot(-(ag.x || 0), (ag.y || 0), -(ag.z || 0));
 					}
 				}
 				var r = e.rotationRate;

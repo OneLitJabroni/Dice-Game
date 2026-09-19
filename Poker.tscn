@@ -201,12 +201,12 @@ layer = 2
 
 [node name="DebugLabel" type="Label" parent="CanvasLayer"]
 anchors_preset = -1
-anchor_right = 0.0990741
-anchor_bottom = 0.0557292
-offset_left = 215.0
-offset_top = 8.0
-offset_right = 255.0
-offset_bottom = 31.0
+anchor_right = 0.358
+anchor_bottom = 0.154
+offset_left = 550.0
+offset_top = 844.0
+offset_right = 476.36
+offset_bottom = 760.32
 metadata/_edit_use_anchors_ = true
 
 [node name="Label2" type="Label" parent="CanvasLayer"]
