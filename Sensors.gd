@@ -1,7 +1,7 @@
 extends Node
 # Autoload named "Sensors". Drop-in replacement for Input.get_accelerometer(),
 # Input.get_gravity() and Input.get_gyroscope() that also works in web exports.
-# Assumes portrait orientation, locked at start — no dynamic angle remapping.
+# Web values are converted to match what Godot reports natively on Android.
 
 var _web := false
 var _locked := false
@@ -15,10 +15,9 @@ func _ready() -> void:
 			window._gdGrav  = {x:0, y:0, z:0};
 			window._gdGyro  = {x:0, y:0, z:0};
 
-			// Portrait-only: no screen-orientation remapping.
-			// Apply Godot's Android sign convention (-x, y, z).
+			// Godot on Android negates all three raw sensor axes.
 			function toGodot(x, y, z) {
-				return {x: -x, y: y, z: z};
+				return {x: -x, y: -y, z: -z};
 			}
 
 			window.addEventListener('devicemotion', function (e) {
@@ -27,16 +26,32 @@ func _ready() -> void:
 				if (ag) {
 					window._gdAccel = toGodot(ag.x || 0, ag.y || 0, ag.z || 0);
 					if (a) {
-						window._gdGrav = toGodot(-((ag.x || 0) - (a.x || 0)),
-												 -((ag.y || 0) - (a.y || 0)),
-												 -((ag.z || 0) - (a.z || 0)));
+						window._gdGrav = toGodot((ag.x || 0) - (a.x || 0),
+												 (ag.y || 0) - (a.y || 0),
+												 (ag.z || 0) - (a.z || 0));
 					} else {
-						window._gdGrav = toGodot(-(ag.x || 0), -(ag.y || 0), -(ag.z || 0));
+						window._gdGrav = window._gdAccel;
 					}
 				}
 				var r = e.rotationRate;
 				if (r) window._gdGyro = toGodot(r.beta || 0, r.gamma || 0, r.alpha || 0);
 			});
+						function askMotion() {
+				if (typeof DeviceMotionEvent !== 'undefined' &&
+					typeof DeviceMotionEvent.requestPermission === 'function') {
+					DeviceMotionEvent.requestPermission().then(function (state) {
+						if (state === 'granted') {
+							document.removeEventListener('touchend', askMotion);
+							document.removeEventListener('click', askMotion);
+						}
+					}).catch(function () {});
+				} else {
+					document.removeEventListener('touchend', askMotion);
+					document.removeEventListener('click', askMotion);
+				}
+			}
+			document.addEventListener('touchend', askMotion);
+			document.addEventListener('click', askMotion);
 		""", true)
 
 
@@ -51,7 +66,7 @@ func _input(event: InputEvent) -> void:
 					return screen.orientation.lock('portrait');
 			}).catch(function () {});
 		""", true)
-		request_ios_permission()
+
 
 
 func _read(prop: String) -> Vector3:
