@@ -2,21 +2,21 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bp52680565kxn"
-path.s3tc="res://.godot/imported/Dicepokertable2_leather.jpg-8eb6dea7d61b2d1ffcb9bf6e2c2fa95b.s3tc.ctex"
-path.etc2="res://.godot/imported/Dicepokertable2_leather.jpg-8eb6dea7d61b2d1ffcb9bf6e2c2fa95b.etc2.ctex"
+uid="uid://vdg01ve7b42q"
+path.s3tc="res://.godot/imported/cup_-red-solo-cup.png-6736445638e15561bd81df251663179f.s3tc.ctex"
+path.etc2="res://.godot/imported/cup_-red-solo-cup.png-6736445638e15561bd81df251663179f.etc2.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 generator_parameters={
-"md5": "b91ce91501d377fe3a95c95b98dc1e36"
+"md5": "f9edfd72a700b77180d2b3f6fe2062da"
 }
 
 [deps]
 
-source_file="res://Assets/Dicepokertable2_leather.jpg"
-dest_files=["res://.godot/imported/Dicepokertable2_leather.jpg-8eb6dea7d61b2d1ffcb9bf6e2c2fa95b.s3tc.ctex", "res://.godot/imported/Dicepokertable2_leather.jpg-8eb6dea7d61b2d1ffcb9bf6e2c2fa95b.etc2.ctex"]
+source_file="res://Assets/RedsoloCup/cup_-red-solo-cup.png"
+dest_files=["res://.godot/imported/cup_-red-solo-cup.png-6736445638e15561bd81df251663179f.s3tc.ctex", "res://.godot/imported/cup_-red-solo-cup.png-6736445638e15561bd81df251663179f.etc2.ctex"]
 
 [params]
 

@@ -1,10 +1,11 @@
-[gd_scene load_steps=17 format=3 uid="uid://c5a6rx67c6xxq"]
+[gd_scene load_steps=18 format=3 uid="uid://c5a6rx67c6xxq"]
 
 [ext_resource type="Script" uid="uid://cuvfth30yuru4" path="res://World.gd" id="1_ycptu"]
-[ext_resource type="PackedScene" uid="uid://cqoh56doij3mi" path="res://Assets/Dicepokertable2.glb" id="2_yrfif"]
-[ext_resource type="PackedScene" uid="uid://ddstktsaoj7pq" path="res://Assets/Floor.glb" id="5_emtod"]
+[ext_resource type="PackedScene" uid="uid://cqoh56doij3mi" path="res://Assets/Tables/OG Craps/Dicepokertable2.glb" id="2_yrfif"]
+[ext_resource type="Texture2D" uid="uid://dhbycpdudm261" path="res://Assets/DiceIcons/yeetpoker_poker_die_1024.png" id="5_4desg"]
+[ext_resource type="PackedScene" uid="uid://ddstktsaoj7pq" path="res://Assets/OGWorld/Floor.glb" id="5_emtod"]
 [ext_resource type="Script" uid="uid://bkkn2jii6v44q" path="res://table_cam.gd" id="5_llbn4"]
-[ext_resource type="PackedScene" uid="uid://b1gbe4rjfqmbe" path="res://Assets/Wall.glb" id="6_gmkbp"]
+[ext_resource type="PackedScene" uid="uid://b1gbe4rjfqmbe" path="res://Assets/OGWorld/Wall.glb" id="6_gmkbp"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ivgg2"]
 size = Vector3(0.891113, 2.32104, 2.24451)
@@ -252,61 +253,93 @@ offset_right = 562.0
 offset_bottom = 375.0
 metadata/_edit_use_anchors_ = true
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer"]
-offset_left = 4.0
-offset_top = 2.0
-offset_right = 254.0
-offset_bottom = 363.0
-theme_override_constants/separation = 4
+[node name="VBoxContainer" type="HBoxContainer" parent="CanvasLayer"]
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 0.0479167
+grow_horizontal = 2
+scale = Vector2(1, 1.44)
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 10
+metadata/_edit_use_anchors_ = true
 
 [node name="Reroll" type="Button" parent="CanvasLayer/VBoxContainer"]
 layout_mode = 2
+size_flags_horizontal = 3
 size_flags_vertical = 3
+theme_override_constants/icon_max_width = 0
+theme_override_constants/align_to_largest_stylebox = 0
 theme_override_font_sizes/font_size = 30
 toggle_mode = true
 action_mode = 0
 text = "Re-Roll"
+vertical_icon_alignment = 0
 metadata/_edit_use_anchors_ = true
 
 [node name="TableCam" type="Button" parent="CanvasLayer/VBoxContainer"]
 layout_mode = 2
+size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_font_sizes/font_size = 30
 toggle_mode = true
 action_mode = 0
 text = "Table Camera"
+icon_alignment = 2
+vertical_icon_alignment = 0
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="CanvasLayer"]
-offset_left = 6.0
-offset_top = 548.0
-offset_right = 280.0
-offset_bottom = 1689.0
+offset_left = -44.0
+offset_top = 346.0
+offset_right = 230.0
+offset_bottom = 1487.0
+scale = Vector2(1.2, 1.12)
 theme_override_constants/separation = 10
 
 [node name="TextureRect1" type="TextureRect" parent="CanvasLayer/VBoxContainer2"]
 texture_repeat = 1
+custom_minimum_size = Vector2(128, 128)
 layout_mode = 2
 size_flags_vertical = 3
+texture = ExtResource("5_4desg")
+expand_mode = 1
+stretch_mode = 5
 metadata/_edit_use_anchors_ = true
 
 [node name="TextureRect2" type="TextureRect" parent="CanvasLayer/VBoxContainer2"]
+custom_minimum_size = Vector2(128, 128)
 layout_mode = 2
 size_flags_vertical = 3
+texture = ExtResource("5_4desg")
+expand_mode = 1
+stretch_mode = 5
 metadata/_edit_use_anchors_ = true
 
 [node name="TextureRect3" type="TextureRect" parent="CanvasLayer/VBoxContainer2"]
+custom_minimum_size = Vector2(128, 128)
 layout_mode = 2
 size_flags_vertical = 3
+texture = ExtResource("5_4desg")
+expand_mode = 1
+stretch_mode = 5
 metadata/_edit_use_anchors_ = true
 
 [node name="TextureRect4" type="TextureRect" parent="CanvasLayer/VBoxContainer2"]
+custom_minimum_size = Vector2(128, 128)
 layout_mode = 2
 size_flags_vertical = 3
+texture = ExtResource("5_4desg")
+expand_mode = 1
+stretch_mode = 5
 metadata/_edit_use_anchors_ = true
 
 [node name="TextureRect5" type="TextureRect" parent="CanvasLayer/VBoxContainer2"]
+custom_minimum_size = Vector2(128, 128)
 layout_mode = 2
 size_flags_vertical = 3
+texture = ExtResource("5_4desg")
+expand_mode = 1
+stretch_mode = 5
 metadata/_edit_use_anchors_ = true
 
 [node name="PlayerCam" type="Camera3D" parent="."]

@@ -18,9 +18,13 @@ extends Node3D
 @onready var texture_rect_4 = $CanvasLayer/VBoxContainer2/TextureRect4
 @onready var texture_rect_5 = $CanvasLayer/VBoxContainer2/TextureRect5
 
+const DEFAULT_FACE := preload("res://Assets/DiceIcons/yeetpoker_poker_die_1024.png")
+
+@onready var face_rects: Array = [texture_rect_1, texture_rect_2, texture_rect_3, texture_rect_4, texture_rect_5]
+
 @onready var debug_label: Label = $CanvasLayer/DebugLabel
 # Label references for results
-@onready var result_label1 = $CanvasLayer/Label1
+@onready var result_label1 = $CanvasLayer/DebugLabel
 @onready var result_label2 = $CanvasLayer/Label2
 @onready var result_label3 = $CanvasLayer/Label3
 @onready var result_label4 = $CanvasLayer/Label4
@@ -97,8 +101,14 @@ func _ready():
 	dice_array[3].connect("roll_finished", Callable(self, "_on_dice_4_roll_finished"))
 	dice_array[4].connect("roll_finished", Callable(self, "_on_dice_5_roll_finished"))
 	
+	reset_faces()
 	
 	
+func reset_faces() -> void:
+	for rect in face_rects:
+		rect.texture = DEFAULT_FACE
+
+
 func _on_table_cam_pressed():
 	
 	if debug_label:
@@ -160,14 +170,12 @@ func roll_selected_dice():
 		i += 1
 	
 	# Clear selection highlighting after reroll
+	# Clear highlight and show the default icon for dice going back in the cup
 	for die in selected_dice:
 		var index = dice_array.find(die)
-		match index:
-			0: texture_rect_1.modulate = Color(1, 1, 1)
-			1: texture_rect_2.modulate = Color(1, 1, 1)
-			2: texture_rect_3.modulate = Color(1, 1, 1)
-			3: texture_rect_4.modulate = Color(1, 1, 1)
-			4: texture_rect_5.modulate = Color(1, 1, 1)
+		if index != -1:
+			face_rects[index].modulate = Color(1, 1, 1)
+			face_rects[index].texture = DEFAULT_FACE
 	selected_dice.clear()
 
 

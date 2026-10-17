@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://cjd2s7l6r3w"
-path="res://.godot/imported/GameDice.glb-d80ea005ec9be150ea7ba3bba2ec6944.scn"
+uid="uid://cwem1wqv8ctyd"
+path="res://.godot/imported/America250cup.glb-baadda34a79bb6fab2dffe303e050b85.scn"
 
 [deps]
 
-source_file="res://Assets/GameDice.glb"
-dest_files=["res://.godot/imported/GameDice.glb-d80ea005ec9be150ea7ba3bba2ec6944.scn"]
+source_file="res://Assets/Cups/America Cup/America250cup.glb"
+dest_files=["res://.godot/imported/America250cup.glb-baadda34a79bb6fab2dffe303e050b85.scn"]
 
 [params]
 

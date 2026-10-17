@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://c385l2hr3s588"
-path="res://.godot/imported/squareplasticcup.glb-980c5b9a9306ab4c3edaa79cd83e065d.scn"
+uid="uid://bnumc2dq2fgi7"
+path="res://.godot/imported/HallowedDice.glb-b2328055c069d325f05919c01d9f92f0.scn"
 
 [deps]
 
-source_file="res://Assets/squareplasticcup.glb"
-dest_files=["res://.godot/imported/squareplasticcup.glb-980c5b9a9306ab4c3edaa79cd83e065d.scn"]
+source_file="res://Assets/Dice/HallowedDice/HallowedDice.glb"
+dest_files=["res://.godot/imported/HallowedDice.glb-b2328055c069d325f05919c01d9f92f0.scn"]
 
 [params]
 

@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://cwem1wqv8ctyd"
-path="res://.godot/imported/America250cup.glb-75263a61d9ddac4019eef453e5464332.scn"
+uid="uid://de0say6f4tubg"
+path="res://.godot/imported/Hallowedcup.glb-e432b25dfe9295980efdb552e9852637.scn"
 
 [deps]
 
-source_file="res://Assets/America250cup.glb"
-dest_files=["res://.godot/imported/America250cup.glb-75263a61d9ddac4019eef453e5464332.scn"]
+source_file="res://Assets/Cups/HallowedCup/Hallowedcup.glb"
+dest_files=["res://.godot/imported/Hallowedcup.glb-e432b25dfe9295980efdb552e9852637.scn"]
 
 [params]
 
@@ -32,6 +32,17 @@ animation/trimming=false
 animation/remove_immutable_tracks=true
 animation/import_rest_as_RESET=false
 import_script/path=""
-_subresources={}
+_subresources={
+"nodes": {
+"PATH:Cylinder": {
+"decomposition/advanced": true,
+"decomposition/max_concavity": 0.001,
+"decomposition/max_convex_hulls": 16,
+"decomposition/resolution": 100000,
+"generate/physics": true,
+"physics/shape_type": 0
+}
+}
+}
 gltf/naming_version=1
 gltf/embedded_image_handling=1

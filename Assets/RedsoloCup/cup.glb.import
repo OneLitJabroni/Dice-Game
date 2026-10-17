@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://d1kxway1e7xnh"
-path="res://.godot/imported/cup.glb-3b95f30fa1542e1c12d4ea6b18583587.scn"
+path="res://.godot/imported/cup.glb-7aa9dbeeb19554e7bdd1580310fa87d7.scn"
 
 [deps]
 
-source_file="res://Assets/cup.glb"
-dest_files=["res://.godot/imported/cup.glb-3b95f30fa1542e1c12d4ea6b18583587.scn"]
+source_file="res://Assets/RedsoloCup/cup.glb"
+dest_files=["res://.godot/imported/cup.glb-7aa9dbeeb19554e7bdd1580310fa87d7.scn"]
 
 [params]
 

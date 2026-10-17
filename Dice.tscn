@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://fyr7meo70t3d"]
 
 [ext_resource type="Script" uid="uid://dujiu50iuuslw" path="res://dice.gd" id="1_qu4n6"]
-[ext_resource type="PackedScene" uid="uid://cjd2s7l6r3w" path="res://Assets/GameDice.glb" id="2_xak8u"]
+[ext_resource type="PackedScene" uid="uid://cjd2s7l6r3w" path="res://Assets/Dice/OGDIce/GameDice.glb" id="2_xak8u"]
 [ext_resource type="PackedScene" uid="uid://doixwg3l14udg" path="res://raycast3d.tscn" id="3_8eu0n"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_d3qmn"]

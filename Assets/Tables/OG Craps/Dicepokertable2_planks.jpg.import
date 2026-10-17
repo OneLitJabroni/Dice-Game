@@ -2,21 +2,21 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b2x0aa3m4ldd5"
-path.s3tc="res://.godot/imported/Floor_Woodfloor.png-03ebb876f55fa139514821256f8a8301.s3tc.ctex"
-path.etc2="res://.godot/imported/Floor_Woodfloor.png-03ebb876f55fa139514821256f8a8301.etc2.ctex"
+uid="uid://cauqjqqvajmgg"
+path.s3tc="res://.godot/imported/Dicepokertable2_planks.jpg-6612a43d425271c5c9038de8d0bd5de9.s3tc.ctex"
+path.etc2="res://.godot/imported/Dicepokertable2_planks.jpg-6612a43d425271c5c9038de8d0bd5de9.etc2.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 generator_parameters={
-"md5": "3b8fabcffef248c0e78170aa6a412933"
+"md5": "b07cc2ae2361f937f0e1481d64377b16"
 }
 
 [deps]
 
-source_file="res://Assets/Floor_Woodfloor.png"
-dest_files=["res://.godot/imported/Floor_Woodfloor.png-03ebb876f55fa139514821256f8a8301.s3tc.ctex", "res://.godot/imported/Floor_Woodfloor.png-03ebb876f55fa139514821256f8a8301.etc2.ctex"]
+source_file="res://Assets/Tables/OG Craps/Dicepokertable2_planks.jpg"
+dest_files=["res://.godot/imported/Dicepokertable2_planks.jpg-6612a43d425271c5c9038de8d0bd5de9.s3tc.ctex", "res://.godot/imported/Dicepokertable2_planks.jpg-6612a43d425271c5c9038de8d0bd5de9.etc2.ctex"]
 
 [params]
 

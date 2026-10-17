@@ -1,1 +1,6 @@
 Copyright (c) 2026 Nathan Todd Pierce. All rights reserved.
+
+This source code is published for viewing and portfolio
+purposes only. No permission is granted to copy, modify,
+distribute, or use this code or its assets, in whole or
+in part, without written permission from the author.

@@ -2,21 +2,21 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cauqjqqvajmgg"
-path.s3tc="res://.godot/imported/Dicepokertable2_planks.jpg-0ba5863fb73438b9c83fceb2c9e1d81b.s3tc.ctex"
-path.etc2="res://.godot/imported/Dicepokertable2_planks.jpg-0ba5863fb73438b9c83fceb2c9e1d81b.etc2.ctex"
+uid="uid://dxsgw4iq8tyul"
+path.s3tc="res://.godot/imported/GameDice_dice symbols.png-4125a20e10810d04e450e4712a554e9f.s3tc.ctex"
+path.etc2="res://.godot/imported/GameDice_dice symbols.png-4125a20e10810d04e450e4712a554e9f.etc2.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 generator_parameters={
-"md5": "b07cc2ae2361f937f0e1481d64377b16"
+"md5": "684c3fa178d523b71dfe4e1a79180144"
 }
 
 [deps]
 
-source_file="res://Assets/Dicepokertable2_planks.jpg"
-dest_files=["res://.godot/imported/Dicepokertable2_planks.jpg-0ba5863fb73438b9c83fceb2c9e1d81b.s3tc.ctex", "res://.godot/imported/Dicepokertable2_planks.jpg-0ba5863fb73438b9c83fceb2c9e1d81b.etc2.ctex"]
+source_file="res://Assets/Dice/OGDIce/GameDice_dice symbols.png"
+dest_files=["res://.godot/imported/GameDice_dice symbols.png-4125a20e10810d04e450e4712a554e9f.s3tc.ctex", "res://.godot/imported/GameDice_dice symbols.png-4125a20e10810d04e450e4712a554e9f.etc2.ctex"]
 
 [params]
 
